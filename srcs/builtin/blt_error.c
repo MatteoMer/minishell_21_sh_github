@@ -14,10 +14,10 @@
 int		blt_cd_error(int i, char *str)
 {
 	if (i == 1)
-		ft_putendl("21sh: cd: HOME not set");
+		ft_putendl("minishell: cd: HOME not set");
 	if (i == 2)
 	{
-		ft_putstr("21sh: cd: ");
+		ft_putstr("minishell: cd: ");
 		if (str)
 		{
 			str[ft_strlen(str) - 1] = '\0';
@@ -28,7 +28,7 @@ int		blt_cd_error(int i, char *str)
 		free(str);
 	}
 	if (i == 3)
-		ft_putendl("21sh: cd: OLDPWD not set");
+		ft_putendl("minishell: cd: OLDPWD not set");
 	return (-1);
 }
 
@@ -36,7 +36,7 @@ int		blt_env_error(char **cmd, int i)
 {
 	if (i == 1)
 	{
-		ft_putstr("21sh: ");
+		ft_putstr("minishell: ");
 		ft_putstr(*cmd);
 		ft_putstr(": ");
 		ft_putstr("invalid argument\n");
@@ -48,7 +48,7 @@ int		blt_bn_error(char **cmd1, char **cmd, int i, int **ret)
 {
 	if (i == 1)
 	{
-		ft_putstr("21sh: ");
+		ft_putstr("minishell: ");
 		ft_putstr(*cmd);
 		ft_putstr(": command not found");
 		ft_putstr("\n");
@@ -66,7 +66,7 @@ int		blt_error(char **cmd, int i)
 	str = (i == 1) ? "setenv" : "unsetenv";
 	if (!cmd[0])
 	{
-		ft_putstr("21sh: ");
+		ft_putstr("minishell: ");
 		ft_putstr(str);
 		ft_putstr(": ");
 		ft_putstr("need argument\n");
@@ -74,7 +74,7 @@ int		blt_error(char **cmd, int i)
 	}
 	if (cmd[0] && cmd[1])
 	{
-		ft_putstr("21sh: ");
+		ft_putstr("minishell: ");
 		ft_putstr(str);
 		ft_putstr(": ");
 		ft_putstr("how many arguments\n");

@@ -6,14 +6,13 @@
 /*   By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 16:19:15 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/06/23 15:57:10 by mmervoye         ###   ########.fr       */
+/*   Updated: 2018/06/25 00:31:31 by matteo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSE_H
 # define PARSE_H
 # include "sh.h"
-# include "../libft/libft.h"
 
 typedef struct s_env	t_env;
 typedef struct			s_ps_tree
@@ -75,5 +74,8 @@ void					blt_free_env(t_env **ptr);
 int						blt_execve(char *path, char **cmd, t_env *env);
 char					*blt_env_access(char **cmd, char *str,\
 char **path, t_env *env);
+void					do_pipe(t_ps_tree *tree);
+void					multi_pipe(t_ps_tree *tree);
+void					exec_wrapper(t_ps_tree *tree);
 
 #endif

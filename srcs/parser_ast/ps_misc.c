@@ -6,7 +6,7 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 17:10:24 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/06/11 12:51:11 by mmervoye         ###   ########.fr       */
+/*   Updated: 2018/06/25 00:43:09 by matteo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int					ps_error(char c)
 		ft_putstr("\033[31mREDIR ERROR\n\033[0m");
 	else
 	{
-		ft_putstr("21sh-42sh: syntax error near unexcepted token: `");
+		ft_putstr("minishell: syntax error near unexcepted token: `");
 		if (c == 125)
 			ft_putstr("||");
 		else if (c == 39)

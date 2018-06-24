@@ -6,7 +6,7 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/24 15:58:52 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/06/23 16:42:37 by mmervoye         ###   ########.fr       */
+/*   Updated: 2018/06/25 00:43:20 by matteo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int				ps_exp_tilde(t_list **tokens)
 	tmp = ft_strdup(env_get("HOME"));
 	if (!tmp || env_get("HOME") == NULL)
 	{
-		ft_putendl("21-42sh: can't use `~`, $HOME is not defined.");
+		ft_putendl("minishell: can't use `~`, $HOME is not defined.");
 		return (-1);
 	}
 	(*tokens)->content = ft_strjoinf(tmp, ptr);

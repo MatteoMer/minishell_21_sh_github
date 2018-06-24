@@ -6,7 +6,7 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/17 13:56:44 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/05/30 13:05:30 by mmervoye         ###   ########.fr       */
+/*   Updated: 2018/06/25 00:42:24 by matteo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void				redir_exec(int op, char *name, int io)
 	{
 		if (redir_input(name, io) == -1)
 		{
-			ft_putstr("21sh: No such file or directory: ");
+			ft_putstr("minishell: No such file or directory: ");
 			ft_putendl(name);
 			return ;
 		}

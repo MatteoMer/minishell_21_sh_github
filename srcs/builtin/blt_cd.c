@@ -6,7 +6,7 @@
 /*   By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/03 10:57:58 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/06/23 14:47:59 by mmervoye         ###   ########.fr       */
+/*   Updated: 2018/06/25 00:41:40 by matteo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static char		*blt_cd_set_curpath(char *s)
 
 	if ((env_get("PWD")) == NULL)
 	{
-		ft_putendl("21sh: error: PWD is not set.");
+		ft_putendl("minishell: error: PWD is not set.");
 		return (NULL);
 	}
 	pwd = env_get("PWD");

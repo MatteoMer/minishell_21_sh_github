@@ -6,7 +6,7 @@
 #    By: xmazella <xmazella@student.42.fd>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/21 11:21:35 by mmervoye          #+#    #+#              #
-#    Updated: 2018/06/23 17:26:54 by mmervoye         ###   ########.fr        #
+#    Updated: 2018/06/25 00:33:19 by matteo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,8 @@ SRC_REDIR =		srcs/redir/redir_main.c\
 				srcs/redir/redir_agreg.c
 
 SRC_BINARY =	srcs/binary/bn_rec.c\
-				srcs/binary/bn_rec2.c
+				srcs/binary/bn_rec2.c\
+				srcs/pipe/do_pipe.c
 
 
 SRC_BUILTIN =	srcs/builtin/blt_check.c\
@@ -82,10 +83,15 @@ $(NAME): $(OBJ)
 
 clean:
 	@make clean -C libft/
-	rm -Rf $(OBJ)
+	@rm -Rf $(OBJ)
 
 fclean: clean
 	@make fclean -C libft/
-	rm -Rf $(NAME)
+	@rm -Rf $(NAME)
+
+libft: 
+	@make -C libft
 
 re: fclean all
+
+.PHONY: all clean fclean re libft

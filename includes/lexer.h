@@ -6,14 +6,13 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/17 13:55:31 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/05/17 11:21:58 by mmervoye         ###   ########.fr       */
+/*   Updated: 2018/06/25 00:31:41 by matteo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LEXER_H
 # define LEXER_H
 # include "sh.h"
-# include "../libft/libft.h"
 # include <limits.h>
 
 t_list			*lx_main(char *buf);
