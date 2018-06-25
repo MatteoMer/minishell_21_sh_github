@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sh.h                                               :+:      :+:    :+:   */
+/*   signal.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+        */
+/*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/17 12:31:04 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/06/25 11:57:35 by mmervoye         ###   ########.fr       */
+/*   Created: 2018/06/25 11:29:41 by mmervoye          #+#    #+#             */
+/*   Updated: 2018/06/25 11:59:09 by mmervoye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SH_H
-# define SH_H
+#include "sh.h"
 
-# include <fcntl.h>
-# include <sys/param.h>
-# include <signal.h>
-# include "../libft/incs/libft.h"
-# include "parse.h"
-# include "lexer.h"
-# include "env.h"
-# include "sh_term.h"
+void				sig_handler_int(int signo)
+{
+	if (signo == SIGINT)
+		if (g_pid != 0)
+		{
+			kill(g_pid, SIGINT);
+		}
+}
 
-pid_t		g_pid;
-
-#endif
+void				sig_handler()
+{
+	signal(SIGINT, sig_handler_int);
+}

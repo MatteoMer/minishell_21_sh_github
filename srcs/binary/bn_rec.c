@@ -6,7 +6,7 @@
 /*   By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 10:21:52 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/06/24 23:48:35 by matteo           ###   ########.fr       */
+/*   Updated: 2018/06/25 11:52:18 by mmervoye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ int							bn_execve1(char *path, char **bn_tab, t_list *lst)
 		wait(&status);
 	if (father == 0)
 	{
+		g_pid = father;
 		while (lst)
 		{
 			if (lst->content_size >= 5 && lst->content_size <= 8)

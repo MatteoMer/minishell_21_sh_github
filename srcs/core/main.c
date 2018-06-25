@@ -6,7 +6,7 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/17 12:10:28 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/06/24 23:49:46 by matteo           ###   ########.fr       */
+/*   Updated: 2018/06/25 11:56:22 by mmervoye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,10 @@ int					main(int argc, char **argv, char **env)
 	unused(argc, argv);
 	g_env = env_init(env);
 	term_init(&term);
+	sig_handler();
 	while (1)
 	{
+		g_pid = 0;
 		buf = term_main_loop(&term);
 		if (buf == NULL)
 		{

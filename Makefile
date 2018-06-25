@@ -6,7 +6,7 @@
 #    By: xmazella <xmazella@student.42.fd>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/21 11:21:35 by mmervoye          #+#    #+#              #
-#    Updated: 2018/06/25 00:33:19 by matteo           ###   ########.fr        #
+#    Updated: 2018/06/25 11:56:40 by mmervoye         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,8 @@ SRC_REDIR =		srcs/redir/redir_main.c\
 
 SRC_BINARY =	srcs/binary/bn_rec.c\
 				srcs/binary/bn_rec2.c\
-				srcs/pipe/do_pipe.c
+				srcs/pipe/do_pipe.c\
+				srcs/signaux/signal.c
 
 
 SRC_BUILTIN =	srcs/builtin/blt_check.c\

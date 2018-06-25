@@ -6,7 +6,7 @@
 /*   By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 16:19:15 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/06/25 00:31:31 by matteo           ###   ########.fr       */
+/*   Updated: 2018/06/25 11:55:42 by mmervoye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,7 @@ char **path, t_env *env);
 void					do_pipe(t_ps_tree *tree);
 void					multi_pipe(t_ps_tree *tree);
 void					exec_wrapper(t_ps_tree *tree);
+void				sig_handler_int(int signo);
+void				sig_handler();
 
 #endif

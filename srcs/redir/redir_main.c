@@ -6,7 +6,7 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/17 13:56:44 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/06/25 00:42:24 by matteo           ###   ########.fr       */
+/*   Updated: 2018/06/25 12:07:18 by mmervoye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ static int			redir_heredoc(char *end_str, int io)
 	while (1)
 	{
 		ft_putstr("heredoc > ");
-		get_next_line(0, &line);
+		if (get_next_line(0, &line) == -1)
+			break ;
 		if (!ft_strcmp(line, end_str))
 			break ;
 		ft_putendl_fd(line, fd);
