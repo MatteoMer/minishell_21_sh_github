@@ -6,7 +6,7 @@
 /*   By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/27 12:56:23 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/06/26 12:41:16 by xmazella         ###   ########.fr       */
+/*   Updated: 2018/06/26 13:41:00 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	blt_echo(char **cmb)
 static int	blt_exit(char **cmd)
 {
 	if (*cmd == NULL)
-		exit (0);
+		exit(0);
 	else
 		exit(ft_atoi(*cmd));
 	return (1);

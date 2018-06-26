@@ -6,15 +6,15 @@
 /*   By: matteo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/24 21:15:06 by matteo            #+#    #+#             */
-/*   Updated: 2018/06/24 23:47:57 by matteo           ###   ########.fr       */
+/*   Updated: 2018/06/26 13:43:36 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh.h"
 
-void			do_pipe(t_ps_tree *tree)
+void		do_pipe(t_ps_tree *tree)
 {
-	int		fd[2];
+	int			fd[2];
 	pid_t		c_pid[2];
 
 	pipe(fd);

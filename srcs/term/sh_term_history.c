@@ -6,7 +6,7 @@
 /*   By: mdelory <mdelory@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 21:45:47 by mdelory           #+#    #+#             */
-/*   Updated: 2018/04/24 03:03:23 by mdelory          ###   ########.fr       */
+/*   Updated: 2018/06/26 13:38:02 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int				term_hst_add_entry(t_history **history, char *text)
 {
 	t_history	*h;
-	
+
 	if (!(h = (t_history *)ft_memalloc(sizeof(t_history))))
 		return (-1);
 	if (*history)
@@ -44,7 +44,7 @@ int				term_hst_older(t_history **history, char *mask)
 		return (-1);
 	hst = (*history)->older;
 	while (hst)
-	{	
+	{
 		if (ft_strncmp(hst->text, mask, ft_strlen(mask)) == 0)
 		{
 			*history = hst;
@@ -63,7 +63,7 @@ int				term_hst_newer(t_history **history, char *mask)
 		return (-1);
 	hst = (*history)->newer;
 	while (hst)
-	{	
+	{
 		if (ft_strncmp(hst->text, mask, ft_strlen(mask)) == 0)
 		{
 			*history = hst;

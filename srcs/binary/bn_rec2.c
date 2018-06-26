@@ -6,7 +6,7 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 17:35:34 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/06/24 23:41:02 by matteo           ###   ########.fr       */
+/*   Updated: 2018/06/26 13:39:59 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char				**ft_sortpath(char **bn_tab, char **cmd_bn_tab)
 	return (bn_tab);
 }
 
-void					exec_wrapper(t_ps_tree *tree)
+void				exec_wrapper(t_ps_tree *tree)
 {
 	if (tree->op_number == '|')
 		do_pipe(tree);
