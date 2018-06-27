@@ -6,7 +6,7 @@
 /*   By: mdelory <mdelory@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 21:45:47 by mdelory           #+#    #+#             */
-/*   Updated: 2018/04/24 03:03:23 by mdelory          ###   ########.fr       */
+/*   Updated: 2018/06/27 17:57:09 by mmervoye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,13 +82,6 @@ int				term_hst_goto_head(t_history **history)
 
 void			term_hst_trace(t_history *history)
 {
-	while (history)
-	{
-		printf("------------------------\n");
-		printf("Address : %p\n", history);
-		printf("Text : %s\n", history->text);
-		printf("Head : %p\n", *(history->head));
-		printf("------------------------\n");
-		history = history->older;
-	}
+	(void)history;
+	return ;
 }
