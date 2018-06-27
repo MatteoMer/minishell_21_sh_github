@@ -1,30 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_main.c                                          :+:      :+:    :+:   */
+/*   sh_term_event5.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/18 16:41:16 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/06/27 17:26:41 by mmervoye         ###   ########.fr       */
+/*   Created: 2018/06/26 19:09:50 by mmervoye          #+#    #+#             */
+/*   Updated: 2018/06/26 19:15:59 by mmervoye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parse.h"
+#include "sh_term.h"
 
-t_ps_tree			*ps_main(char *buf)
+int					term_evt_cut(t_term *term)
 {
-	t_ps_tree	*ast;
-	t_list		*tokens;
-
-	ast = NULL;
-	tokens = NULL;
-	tokens = lx_main(buf);
-	if (!tokens)
-		return (NULL);
-	if (ps_do_parse(tokens) == -1)
-		return (NULL);
-	if ((ast = ps_recursive(&tokens)) == 0)
-		return (NULL);
-	return (ast);
+	ft_strcpy(term->paste_buf, term->line_edit.text);
+	return (term_evt_cancel(term));
 }

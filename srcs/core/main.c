@@ -6,7 +6,7 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/17 12:10:28 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/06/25 11:56:22 by mmervoye         ###   ########.fr       */
+/*   Updated: 2018/06/27 17:32:33 by mmervoye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,21 @@ void					unused(int argc, char **argv)
 {
 	(void)argc;
 	(void)argv;
+}
+
+char				*get_buffer(t_term *term)
+{
+	char		*tmp;
+	char		*buf;
+
+	tmp = term_main_loop(term);
+	if (tmp == NULL)
+	{
+		write(2, "Bye...\n", 7);
+		exit(1);
+	}
+	buf = ft_strtrim(tmp);
+	return (buf);
 }
 
 int					main(int argc, char **argv, char **env)
@@ -32,17 +47,13 @@ int					main(int argc, char **argv, char **env)
 	while (1)
 	{
 		g_pid = 0;
-		buf = term_main_loop(&term);
-		if (buf == NULL)
-		{
-			write(2, "Bye...\n", 7);
-			return (-1);
-		}
+		buf = get_buffer(&term);
 		ast = ps_main(buf); 
 		tmp = ast;
 		bn_rec(ast, 0);
 		ps_free_ast(&ast);
-		}
+		ft_strdel(&buf);
+	}
 
 	return (0);
 }

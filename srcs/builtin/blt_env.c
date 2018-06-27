@@ -6,7 +6,7 @@
 /*   By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/27 14:06:07 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/06/23 14:40:51 by mmervoye         ###   ########.fr       */
+/*   Updated: 2018/06/27 17:51:39 by mmervoye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,7 @@ static int			blt_exec_cmd_env(char *str, t_env *env, char **cmd)
 
 	i = 0;
 	cpath = NULL;
-	ret = blt_env_check(cmd);
-	if (ret == 0)
+	if ((ret = blt_env_check(cmd)) == 0)
 	{
 		if ((cpath = blt_getpath(env)) == NULL)
 			return (0);
@@ -49,6 +48,8 @@ static int			blt_exec_cmd_env(char *str, t_env *env, char **cmd)
 			ft_putendl(str);
 			return (-1);
 		}
+		else
+			ft_strdel(&tmp);
 	}
 	ft_deltab(&ptr);
 	return (0);
