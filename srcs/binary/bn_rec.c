@@ -6,7 +6,7 @@
 /*   By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 10:21:52 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/06/25 11:52:18 by mmervoye         ###   ########.fr       */
+/*   Updated: 2018/06/27 18:05:07 by mmervoye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int							bn_execve1(char *path, char **bn_tab, t_list *lst)
 	int		status;
 	char	**env_tab;
 
+	(void)lst;
 	env_tab = NULL;
 	father = fork();
 	if (father > 0)
@@ -73,12 +74,6 @@ int							bn_execve1(char *path, char **bn_tab, t_list *lst)
 	if (father == 0)
 	{
 		g_pid = father;
-		while (lst)
-		{
-			if (lst->content_size >= 5 && lst->content_size <= 8)
-				redir_exec(lst->content_size, lst->next->content, -1);
-			lst = lst->next;
-		}
 		env_tab = env_conv_tab();
 		execve(path, bn_tab, env_tab);
 		ft_deltab(&env_tab);

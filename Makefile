@@ -6,7 +6,7 @@
 #    By: xmazella <xmazella@student.42.fd>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/21 11:21:35 by mmervoye          #+#    #+#              #
-#    Updated: 2018/06/25 11:56:40 by mmervoye         ###   ########.fr        #
+#    Updated: 2018/06/27 18:05:25 by mmervoye         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,9 +43,6 @@ SRC_ENV =		srcs/env/env_init.c\
 				srcs/env/env_get.c\
 				srcs/env/env_conv.c
 
-SRC_REDIR =		srcs/redir/redir_main.c\
-				srcs/redir/redir_agreg.c
-
 SRC_BINARY =	srcs/binary/bn_rec.c\
 				srcs/binary/bn_rec2.c\
 				srcs/pipe/do_pipe.c\
@@ -66,7 +63,7 @@ SRC_BUILTIN =	srcs/builtin/blt_check.c\
 				srcs/builtin/blt_free_env.c
 
 SRC = $(SRC_TERM) $(SRC_LX) $(SRC_PS) $(SRC_CORE) $(SRC_ENV) $(SRC_BINARY) \
-	  $(SRC_BUILTIN) $(SRC_REDIR)
+	  $(SRC_BUILTIN)
 
 HEADER = sh.h
 

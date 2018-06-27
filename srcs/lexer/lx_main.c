@@ -6,7 +6,7 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/30 13:00:08 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/06/11 13:05:01 by mmervoye         ###   ########.fr       */
+/*   Updated: 2018/06/27 18:06:02 by mmervoye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ static int			lx_if(char *buf, t_list **tokens)
 	len = 0;
 	if (ft_isdigit(*buf))
 		len += lx_check_io(buf, tokens) - 1;
-	else if (*buf == '>' || *buf == '<')
-		len += lx_new_redir(buf, tokens);
 	else if (lx_is_word(*buf))
 		len += lx_new_word(buf, tokens) - 1;
 	else if (lx_is_op(*buf))
