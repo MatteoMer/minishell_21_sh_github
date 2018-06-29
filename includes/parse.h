@@ -6,7 +6,7 @@
 /*   By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 16:19:15 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/06/25 00:31:31 by matteo           ###   ########.fr       */
+/*   Updated: 2018/06/27 20:29:04 by mmervoye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,10 @@ void					blt_free_env(t_env **ptr);
 int						blt_execve(char *path, char **cmd, t_env *env);
 char					*blt_env_access(char **cmd, char *str,\
 char **path, t_env *env);
-void					do_pipe(t_ps_tree *tree);
+int						do_pipe(t_ps_tree *tree);
 void					multi_pipe(t_ps_tree *tree);
-void					exec_wrapper(t_ps_tree *tree);
+int						exec_wrapper(t_ps_tree *tree);
+void					sig_handler_int(int signo);
+void					sig_handler();
 
 #endif

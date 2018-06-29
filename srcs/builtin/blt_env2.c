@@ -6,7 +6,7 @@
 /*   By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/29 14:23:18 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/06/23 14:41:12 by mmervoye         ###   ########.fr       */
+/*   Updated: 2018/06/29 12:00:03 by mmervoye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,12 @@ char		**blt_getpath(t_env *env)
 char		*blt_env_access(char **cmd, char *str, char **path, t_env *env)
 {
 	char		*tmp;
+	char		**ptr;
 
+	ptr = path;
 	while (*path != NULL)
 	{
-		tmp = ft_strjoin(*path++, "/");
+		tmp = ft_strjoinf(*path++, "/");
 		tmp = ft_strjoinf(tmp, str);
 		if (access(tmp, F_OK) == 0)
 		{
@@ -79,6 +81,7 @@ char		*blt_env_access(char **cmd, char *str, char **path, t_env *env)
 		if (*(path + 1) == NULL)
 			return (NULL);
 	}
+	free(ptr);
 	return (tmp);
 }
 

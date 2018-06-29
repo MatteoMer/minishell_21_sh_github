@@ -6,7 +6,7 @@
 /*   By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 10:21:52 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/06/24 23:48:35 by matteo           ###   ########.fr       */
+/*   Updated: 2018/06/29 13:49:36 by mmervoye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,18 +66,14 @@ int							bn_execve1(char *path, char **bn_tab, t_list *lst)
 	int		status;
 	char	**env_tab;
 
+	(void)lst;
 	env_tab = NULL;
 	father = fork();
 	if (father > 0)
 		wait(&status);
 	if (father == 0)
 	{
-		while (lst)
-		{
-			if (lst->content_size >= 5 && lst->content_size <= 8)
-				redir_exec(lst->content_size, lst->next->content, -1);
-			lst = lst->next;
-		}
+		g_pid = father;
 		env_tab = env_conv_tab();
 		execve(path, bn_tab, env_tab);
 		ft_deltab(&env_tab);
@@ -136,6 +132,7 @@ int							bn_binary(t_ps_tree *tree)
 	if (bn_tab[ret[1]] == NULL)
 		return (blt_bn_error(bn_tab, cmd_bn_tab, 1, &ret));
 	ft_deltab(&bn_tab);
+	i = ret[0];
 	free(ret);
-	return (0);
+	return (i);
 }

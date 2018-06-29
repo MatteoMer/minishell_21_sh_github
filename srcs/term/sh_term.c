@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_term.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdelory <mdelory@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/20 21:44:34 by mdelory           #+#    #+#             */
-/*   Updated: 2018/06/23 17:26:47 by mmervoye         ###   ########.fr       */
+/*   Created: 2018/06/29 13:55:41 by mmervoye          #+#    #+#             */
+/*   Updated: 2018/06/29 14:24:35 by mmervoye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void			term_write_prompt(t_term *term)
 	col = ft_strlen(term->line_edit.prompt);
 	col += term->line_edit.cur;
 	col %= term->wsize.ws_col;
-	term_set_fcolor(255, 204, 0);
+	term_set_fcolor(102, 255, 255);
 	ft_putstr(term->line_edit.prompt);
 	term_reset_color();
 	ft_putstr(term->line_edit.text);
@@ -87,10 +87,12 @@ int				term_init(t_term *term)
 
 	term_name = getenv("TERM");
 	if (tgetent(NULL, term_name) <= 0)
+		term_name = "xterm-256color";
+	if (tgetent(NULL, term_name) <= 0)
 		return (-1);
 	if (tcgetattr(0, &(term->term_ios)))
 		return (-1);
-	term->line_edit.prompt = "(minishell) -> ";
+	term->line_edit.prompt = "mmervoye's minishell $> ";
 	term->history = NULL;
 	term->idle = 0;
 	term->old_ios = term->term_ios;

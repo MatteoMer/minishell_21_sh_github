@@ -6,16 +6,16 @@
 /*   By: matteo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/24 21:15:06 by matteo            #+#    #+#             */
-/*   Updated: 2018/06/24 23:47:57 by matteo           ###   ########.fr       */
+/*   Updated: 2018/06/29 14:01:00 by mmervoye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh.h"
 
-void			do_pipe(t_ps_tree *tree)
+int				do_pipe(t_ps_tree *tree)
 {
 	int		fd[2];
-	pid_t		c_pid[2];
+	pid_t	c_pid[2];
 
 	pipe(fd);
 	if ((c_pid[0] = fork()) == 0)
@@ -36,4 +36,5 @@ void			do_pipe(t_ps_tree *tree)
 	close(fd[1]);
 	waitpid(c_pid[0], 0, 0);
 	waitpid(c_pid[1], 0, 0);
+	return (0);
 }

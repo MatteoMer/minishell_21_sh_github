@@ -6,7 +6,7 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 13:14:43 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/05/17 17:37:26 by mmervoye         ###   ########.fr       */
+/*   Updated: 2018/06/29 11:41:07 by mmervoye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,29 +57,4 @@ char			*lx_strdup(char *buf)
 	}
 	str[i] = '\0';
 	return (str);
-}
-
-int				lx_new_redir(char *buf, t_list **tokens)
-{
-	t_list		*new;
-	int			len;
-	char		*c;
-
-	c = buf + 1;
-	new = ft_lstnew(NULL, 0);
-	if (*buf == '<')
-		new->content_size = 5;
-	if (*buf == '>')
-		new->content_size = 6;
-	if (*buf == '<' && *c == '<')
-		new->content_size = 7;
-	if (*buf == '>' && *c == '>')
-		new->content_size = 8;
-	ft_lstadd(tokens, new);
-	if (*c == *buf)
-		len = 2;
-	else
-		len = 1;
-	len += redir_agreg_check(tokens, buf + len);
-	return (len);
 }

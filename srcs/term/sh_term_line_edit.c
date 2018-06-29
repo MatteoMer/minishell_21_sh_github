@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_term_line_edit.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdelory <mdelory@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/20 18:39:01 by mdelory           #+#    #+#             */
-/*   Updated: 2018/05/04 13:45:43 by mdelory          ###   ########.fr       */
+/*   Created: 2018/06/29 13:55:41 by mmervoye          #+#    #+#             */
+/*   Updated: 2018/06/29 14:25:36 by mmervoye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int				term_le_insert(t_line_edit *le, char c)
 
 	if (le->len == LINE_MAX)
 		return (-1);
-	b =	le->text + le->cur;
+	b = le->text + le->cur;
 	ft_memmove(b + 1, b, le->len - le->cur);
 	le->text[le->cur] = c;
 	le->cur++;
@@ -54,7 +54,7 @@ int				term_le_bspace(t_line_edit *le)
 
 	if (le->cur == 0)
 		return (-1);
-	b =	(le->text + le->cur);
+	b = (le->text + le->cur);
 	ft_memmove(b - 1, b, (le->len - le->cur) + 1);
 	le->cur--;
 	le->len--;
@@ -67,7 +67,7 @@ int				term_le_delete(t_line_edit *le)
 
 	if (le->cur == le->len)
 		return (-1);
-	b =	le->text + le->cur;
+	b = le->text + le->cur;
 	ft_memmove(b, b + 1, le->len - le->cur);
 	le->len--;
 	return (0);

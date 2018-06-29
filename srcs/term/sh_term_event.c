@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_term_event.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdelory <mdelory@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/20 21:45:33 by mdelory           #+#    #+#             */
-/*   Updated: 2018/06/23 17:26:53 by mmervoye         ###   ########.fr       */
+/*   Created: 2018/06/29 13:55:41 by mmervoye          #+#    #+#             */
+/*   Updated: 2018/06/29 14:24:54 by mmervoye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int				term_evt_dispatch(t_term *term, char kc)
 	else if (kc == 0x7F)
 		handler = term_evt_bspace;
 	else if (kc == 0x1B)
-		handler = term_evt_esc_dispatch();
+		handler = g_term_evt_esc_dispatch();
 	else if (kc == 0x0C)
 		handler = term_evt_clear;
 	if (!handler)
@@ -38,7 +38,7 @@ int				term_evt_dispatch(t_term *term, char kc)
 	return (0);
 }
 
-int				(*term_evt_esc_dispatch(void))(t_term *)
+int				(*g_term_evt_esc_dispatch(void))(t_term *)
 {
 	char		seq[8];
 

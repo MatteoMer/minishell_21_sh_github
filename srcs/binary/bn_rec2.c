@@ -6,7 +6,7 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 17:35:34 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/06/24 23:41:02 by matteo           ###   ########.fr       */
+/*   Updated: 2018/06/29 14:46:10 by mmervoye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,19 @@ char				**ft_sortpath(char **bn_tab, char **cmd_bn_tab)
 	return (bn_tab);
 }
 
-void					exec_wrapper(t_ps_tree *tree)
+int					exec_wrapper(t_ps_tree *tree)
 {
 	if (tree->op_number == '|')
-		do_pipe(tree);
+		return (do_pipe(tree));
 	else
-		bn_binary(tree);
+		return (bn_binary(tree));
 }
 
 int					bn_rec(t_ps_tree *tree, char op)
 {
 	int		ret;
 
+	ret = 0;
 	if (!tree)
 		return (0);
 	if (tree->left != NULL)
@@ -55,6 +56,6 @@ int					bn_rec(t_ps_tree *tree, char op)
 			bn_rec(tree->right, tree->op_number);
 	}
 	else if (op != '|')
-		exec_wrapper(tree);
+		ret = exec_wrapper(tree);
 	return (0);
 }

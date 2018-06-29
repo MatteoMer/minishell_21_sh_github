@@ -6,7 +6,7 @@
 /*   By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/27 14:06:07 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/06/23 14:40:51 by mmervoye         ###   ########.fr       */
+/*   Updated: 2018/06/29 14:33:58 by mmervoye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int					blt_execve(char *path, char **cmd, t_env *env)
 		waitpid(father, &status, 0);
 	if (father == 0)
 		execve(path, cmd, blt_conv_tab(env));
+	free(path);
 	return (status);
 }
 
@@ -50,7 +51,6 @@ static int			blt_exec_cmd_env(char *str, t_env *env, char **cmd)
 			return (-1);
 		}
 	}
-	ft_deltab(&ptr);
 	return (0);
 }
 

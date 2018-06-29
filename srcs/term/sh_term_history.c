@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_term_history.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdelory <mdelory@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/20 21:45:47 by mdelory           #+#    #+#             */
-/*   Updated: 2018/04/24 03:03:23 by mdelory          ###   ########.fr       */
+/*   Created: 2018/06/29 13:55:41 by mmervoye          #+#    #+#             */
+/*   Updated: 2018/06/29 14:25:27 by mmervoye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int				term_hst_add_entry(t_history **history, char *text)
 {
 	t_history	*h;
-	
+
 	if (!(h = (t_history *)ft_memalloc(sizeof(t_history))))
 		return (-1);
 	if (*history)
@@ -44,7 +44,7 @@ int				term_hst_older(t_history **history, char *mask)
 		return (-1);
 	hst = (*history)->older;
 	while (hst)
-	{	
+	{
 		if (ft_strncmp(hst->text, mask, ft_strlen(mask)) == 0)
 		{
 			*history = hst;
@@ -63,7 +63,7 @@ int				term_hst_newer(t_history **history, char *mask)
 		return (-1);
 	hst = (*history)->newer;
 	while (hst)
-	{	
+	{
 		if (ft_strncmp(hst->text, mask, ft_strlen(mask)) == 0)
 		{
 			*history = hst;
@@ -78,17 +78,4 @@ int				term_hst_goto_head(t_history **history)
 {
 	*history = *((*history)->head);
 	return (0);
-}
-
-void			term_hst_trace(t_history *history)
-{
-	while (history)
-	{
-		printf("------------------------\n");
-		printf("Address : %p\n", history);
-		printf("Text : %s\n", history->text);
-		printf("Head : %p\n", *(history->head));
-		printf("------------------------\n");
-		history = history->older;
-	}
 }
