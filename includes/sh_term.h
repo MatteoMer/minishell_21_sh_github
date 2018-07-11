@@ -6,7 +6,7 @@
 /*   By: mdelory <mdelory@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 21:45:15 by mdelory           #+#    #+#             */
-/*   Updated: 2018/06/29 14:22:53 by mmervoye         ###   ########.fr       */
+/*   Updated: 2018/07/11 20:06:05 by mdelory          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,17 @@ struct						s_term
 	struct s_history		*history;
 	int						idle;
 	int						ctn;
+	int						cur_x;
+	int						cur_y;
+	int						p_x;
+	int						p_y;
 	t_winsize				wsize;
 	struct termios			term_ios;
 	struct termios			old_ios;
 };
 
 char						*term_main_loop(t_term *term);
-int							term_read_input(t_term *term, char kc, int rd);
+int							term_read_input(t_term *term);
 void						term_write_prompt(t_term *term);
 void						term_refresh(t_term *term);
 int							term_init(t_term *term);
@@ -95,9 +99,6 @@ int							term_le_move_prev_word(t_line_edit *le);
 int							term_le_check_quote(t_line_edit *le);
 void						term_exec_tc(char *str);
 void						term_exec_goto(char *str, int x, int y);
-void						term_set_bcolor(unsigned char r, unsigned char g,\
-unsigned char b);
-void						term_set_fcolor(unsigned char r, unsigned char g,\
-unsigned char b);
-void						term_reset_color(void);
+
+void						term_get_pos(t_term *term, int *x, int *y);
 #endif
