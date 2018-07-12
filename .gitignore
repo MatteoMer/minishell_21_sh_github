@@ -2,3 +2,4 @@
 *.swo
 *.swn
 *.o
+*.dSYM

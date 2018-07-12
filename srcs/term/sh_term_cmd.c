@@ -6,7 +6,7 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/29 13:55:41 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/07/11 21:03:29 by mdelory          ###   ########.fr       */
+/*   Updated: 2018/07/12 19:55:41 by mdelory          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ void				term_exec_tc(char *str)
 	char		*s;
 
 	s = tgetstr(str, NULL);
-	write(1, s, ft_strlen(s));
+	if (s)
+		write(1, s, ft_strlen(s));
 }
 
 void				term_exec_goto(char *str, int x, int y)

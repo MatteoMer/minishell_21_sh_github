@@ -6,7 +6,7 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/29 13:55:41 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/07/11 21:03:48 by mdelory          ###   ########.fr       */
+/*   Updated: 2018/07/12 20:19:46 by mdelory          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,11 @@ void			term_write_prompt(t_term *term)
 	int			y;
 
 	term_exec_tc("cd");
-	y = term->p_y;
 	x = ft_strlen(term->line_edit.prompt) + term->line_edit.cur;
-	y += x / term->wsize.ws_col;
+	y = x / term->wsize.ws_col;
+	y += term->p_y;
 	x %= term->wsize.ws_col;
+	term_exec_goto("cm", term->p_x, term->p_y);
 	ft_putstr(term->line_edit.prompt);
 	ft_putstr(term->line_edit.text);
 	term_exec_goto("cm", x, y);
@@ -54,10 +55,20 @@ void			term_write_prompt(t_term *term)
 
 void			term_refresh(t_term *term)
 {
+	int			x;
+	int			y;
+
 	if (term->idle == 1 && term->line_edit.cur == term->line_edit.len)
 		term_exec_tc("vi");
 	else
 		term_exec_tc("ve");
+	x = ft_strlen(term->line_edit.prompt) + term->line_edit.len;
+	y = x / term->wsize.ws_col;
+	if (term->p_y + y >= term->wsize.ws_row)
+	{
+		term_exec_tc("sf");
+		term->p_y--;
+	}
 	term_exec_goto("cm", term->p_x, term->p_y);
 }
 
@@ -98,7 +109,8 @@ int				term_init(t_term *term)
 	term->old_ios = term->term_ios;
 	term->term_ios.c_iflag &= ~(ICRNL | IXON);
 	term->term_ios.c_lflag &= ~(ICANON | ECHO | IEXTEN | ISIG);
-	term->term_ios.c_cc[VMIN] = 0;
+	term->term_ios.c_cc[VMIN] = 1;
 	term->term_ios.c_cc[VTIME] = 5;
+	term_exec_tc("ns");
 	return (0);
 }
