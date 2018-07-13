@@ -6,7 +6,7 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/29 13:55:41 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/07/12 20:19:46 by mdelory          ###   ########.fr       */
+/*   Updated: 2018/07/13 16:46:32 by mdelory          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,8 +109,7 @@ int				term_init(t_term *term)
 	term->old_ios = term->term_ios;
 	term->term_ios.c_iflag &= ~(ICRNL | IXON);
 	term->term_ios.c_lflag &= ~(ICANON | ECHO | IEXTEN | ISIG);
-	term->term_ios.c_cc[VMIN] = 1;
+	term->term_ios.c_cc[VMIN] = 0;
 	term->term_ios.c_cc[VTIME] = 5;
-	term_exec_tc("ns");
 	return (0);
 }

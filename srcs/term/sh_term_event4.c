@@ -6,7 +6,7 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/29 13:55:41 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/06/29 14:25:17 by mmervoye         ###   ########.fr       */
+/*   Updated: 2018/07/13 16:49:42 by mdelory          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int					term_evt_alt_rightarrow(t_term *term)
 
 int					term_evt_clear(t_term *term)
 {
-	ft_putendl("haha");
 	(void)term;
 	term_exec_tc("cl");
+	term->p_y = 0;
 	return (0);
 }
