@@ -6,7 +6,7 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/09 10:46:58 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/07/11 13:58:57 by mmervoye         ###   ########.fr       */
+/*   Updated: 2018/07/13 13:58:56 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ static int			exec_output(int out, char *name, int n)
 static int			exec_input(int out, char *name)
 {
 	int			fd;
+
 	fd = open(name, O_RDONLY);
 	if (fd == -1)
 		return (-1);
-	dup2(fd , out);
+	dup2(fd, out);
 	close(fd);
-
 	return (0);
 }
 

@@ -6,13 +6,13 @@
 /*   By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 10:21:52 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/07/09 18:30:56 by mmervoye         ###   ########.fr       */
+/*   Updated: 2018/07/13 13:57:35 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh.h"
 
-static int					bn_convert_count(t_list *tmp)
+static int				bn_convert_count(t_list *tmp)
 {
 	int		i;
 
@@ -28,9 +28,9 @@ static int					bn_convert_count(t_list *tmp)
 	return (i);
 }
 
-static char					**bn_convert_list(t_list *lst)
+static char				**bn_convert_list(t_list *lst)
 {
-	char	 	**env_tab;
+	char		**env_tab;
 	int			i;
 
 	i = bn_convert_count(lst);
@@ -53,7 +53,7 @@ static char					**bn_convert_list(t_list *lst)
 	return (env_tab);
 }
 
-int							bn_execve1(char *path, char **bn_tab, t_list *lst)
+int						bn_execve1(char *path, char **bn_tab, t_list *lst)
 {
 	pid_t	father;
 	int		status;
@@ -76,8 +76,8 @@ int							bn_execve1(char *path, char **bn_tab, t_list *lst)
 	return (status);
 }
 
-int				bn_func_exec(char **bn_tab, char **cpath,\
-		char **cmd_bn_tab, t_ps_tree *tree)
+int						bn_func_exec(char **bn_tab, char **cpath,\
+						char **cmd_bn_tab, t_ps_tree *tree)
 {
 	int		j;
 	int		ret;
@@ -100,7 +100,7 @@ int				bn_func_exec(char **bn_tab, char **cpath,\
 	return (ret);
 }
 
-int							bn_binary(t_ps_tree *tree)
+int						bn_binary(t_ps_tree *tree)
 {
 	char			**bn_tab;
 	char			**cmd_bn_tab;

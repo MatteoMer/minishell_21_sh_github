@@ -6,7 +6,7 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 17:10:24 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/07/09 09:23:40 by mmervoye         ###   ########.fr       */
+/*   Updated: 2018/07/13 13:55:26 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,23 +26,23 @@ t_ps_tree			*ps_init_tree(void)
 
 int					ps_error(char c)
 {
-		ft_putstr("minishell: syntax error near unexcepted token: `");
-		if (c == 125)
-			ft_putstr("||");
-		else if (c == 39)
-			ft_putstr("&&");
-		else if (c == 5)
-			ft_putchar('<');
-		else if (c == 6)
-			ft_putchar('>');
-		else if (c == 7)
-			ft_putstr("<<");
-		else if (c == 8)
-			ft_putstr(">>");
-		else
-			ft_putchar(c);
-		ft_putchar('\'');
-		ft_putchar('\n');
+	ft_putstr("minishell: syntax error near unexcepted token: `");
+	if (c == 125)
+		ft_putstr("||");
+	else if (c == 39)
+		ft_putstr("&&");
+	else if (c == 5)
+		ft_putchar('<');
+	else if (c == 6)
+		ft_putchar('>');
+	else if (c == 7)
+		ft_putstr("<<");
+	else if (c == 8)
+		ft_putstr(">>");
+	else
+		ft_putchar(c);
+	ft_putchar('\'');
+	ft_putchar('\n');
 	return (-1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/09 09:16:22 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/07/09 16:26:26 by mmervoye         ###   ########.fr       */
+/*   Updated: 2018/07/13 13:56:03 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int				lx_redir(char *buf, t_list **tokens)
 {
 	int			len;
-	
+
 	len = 0;
 	len += lx_new_redir(buf, tokens);
 	return (len);
