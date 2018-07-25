@@ -6,22 +6,25 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 14:05:23 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/04/18 16:17:08 by mmervoye         ###   ########.fr       */
+/*   Updated: 2018/07/25 22:28:48 by matteo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lexer.h"
+#include <stdio.h> //
 
 static int				lx_wlenquote(char *buf)
 {
 	int		i;
+	char		c;
 
 	i = 0;
+	c = *buf;
 	buf++;
 	while (*buf)
 	{
 		i++;
-		if (*buf == '"')
+		if (*buf == c)
 			return (i);
 		buf++;
 	}

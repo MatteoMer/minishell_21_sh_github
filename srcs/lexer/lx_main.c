@@ -6,7 +6,7 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/30 13:00:08 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/07/09 18:38:49 by mmervoye         ###   ########.fr       */
+/*   Updated: 2018/07/25 21:27:33 by matteo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_list				*lx_main(char *buf)
 	{
 		while (*buf == ' ' || *buf == '\t')
 			buf++;
-		if (*buf == '"')
+		if (*buf == '"' || *buf == 39)
 		{
 			if ((i = lx_quote(buf, &tokens)) == -1)
 				return (NULL);
