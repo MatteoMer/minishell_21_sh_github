@@ -6,7 +6,7 @@
 /*   By: mdelory <mdelory@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 21:45:15 by mdelory           #+#    #+#             */
-/*   Updated: 2018/07/11 20:06:05 by mdelory          ###   ########.fr       */
+/*   Updated: 2018/07/29 15:33:59 by mmervoye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ struct						s_term
 	t_winsize				wsize;
 	struct termios			term_ios;
 	struct termios			old_ios;
+	char					c_buffer[LINE_MAX];
 };
 
 char						*term_main_loop(t_term *term);
@@ -83,6 +84,9 @@ int							term_evt_cancel(t_term *term);
 int							term_evt_end(t_term *term);
 int							term_evt_home(t_term *term);
 int							term_evt_clear(t_term *term);
+int							term_evt_copy(t_term *term);
+int							term_evt_cut(t_term *term);
+int							term_evt_paste(t_term *term);
 int							term_hst_add_entry(t_history **history, char *text);
 int							term_hst_older(t_history **history, char *mask);
 int							term_hst_newer(t_history **history, char *mask);

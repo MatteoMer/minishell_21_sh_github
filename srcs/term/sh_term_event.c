@@ -6,7 +6,7 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/29 13:55:41 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/06/29 14:24:54 by mmervoye         ###   ########.fr       */
+/*   Updated: 2018/07/29 15:36:40 by mmervoye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,12 @@ int				term_evt_dispatch(t_term *term, char kc)
 		handler = g_term_evt_esc_dispatch();
 	else if (kc == 0x0C)
 		handler = term_evt_clear;
+	else if (kc == 0x19)
+		handler = term_evt_copy;
+	else if (kc == 0x18)
+		handler = term_evt_cut;
+	else if (kc == 0x10)
+		handler = term_evt_paste;
 	if (!handler)
 		return (-1);
 	if ((*handler)(term) == -1)

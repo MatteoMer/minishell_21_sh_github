@@ -6,7 +6,7 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/17 12:10:28 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/07/11 21:07:23 by mdelory          ###   ########.fr       */
+/*   Updated: 2018/07/29 15:30:21 by mmervoye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,7 @@ static char				*get_buffer(t_term *term)
 
 	tmp = term_main_loop(term);
 	if (tmp == NULL)
-	{
-		write(2, "Bye...\n", 7);
 		exit(1);
-	}
 	buf = ft_strtrim(tmp);
 	return (buf);
 }

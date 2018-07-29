@@ -6,7 +6,7 @@
 #    By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/21 11:21:35 by mmervoye          #+#    #+#              #
-#    Updated: 2018/07/11 14:06:52 by mmervoye         ###   ########.fr        #
+#    Updated: 2018/07/29 15:34:21 by mmervoye         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ SRC_TERM =		srcs/term/sh_term.c\
 				srcs/term/sh_term_event2.c\
 				srcs/term/sh_term_event3.c\
 				srcs/term/sh_term_event4.c\
+				srcs/term/sh_term_event5.c\
 				srcs/term/sh_term_history.c\
 				srcs/term/sh_term_line_edit.c\
 				srcs/term/sh_term_line_edit2.c

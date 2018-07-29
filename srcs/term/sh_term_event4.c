@@ -6,7 +6,7 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/29 13:55:41 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/07/13 16:49:42 by mdelory          ###   ########.fr       */
+/*   Updated: 2018/07/29 15:33:37 by mmervoye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,20 @@ int					term_evt_clear(t_term *term)
 	(void)term;
 	term_exec_tc("cl");
 	term->p_y = 0;
+	return (0);
+}
+
+int					term_evt_copy(t_term *term)
+{
+	ft_strcpy(term->c_buffer, term->line_edit.text + term->line_edit.cur);
+	term->line_edit.len += ft_strlen(term->c_buffer);
+	term->line_edit.cur += ft_strlen(term->c_buffer);
+	return (0);
+}
+
+int					term_evt_cut(t_term *term)
+{
+	ft_strcpy(term->c_buffer, term->line_edit.text + term->line_edit.cur);
+	ft_bzero(term->line_edit.text + term->line_edit.cur, ft_strlen(term->line_edit.text + term->line_edit.cur));
 	return (0);
 }
