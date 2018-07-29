@@ -3,3 +3,5 @@
 *.swn
 *.o
 *.dSYM
+21sh
+.heredoc_tmp

@@ -6,7 +6,7 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/17 12:10:28 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/07/29 15:30:21 by mmervoye         ###   ########.fr       */
+/*   Updated: 2018/07/29 18:04:51 by mmervoye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ static char				*get_buffer(t_term *term)
 	char		*tmp;
 	char		*buf;
 
+	term_exec_tc("cr");
+	term_exec_tc("cd");
 	tmp = term_main_loop(term);
 	if (tmp == NULL)
 		exit(1);
