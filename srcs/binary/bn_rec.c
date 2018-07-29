@@ -6,7 +6,7 @@
 /*   By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 10:21:52 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/07/13 13:57:35 by xmazella         ###   ########.fr       */
+/*   Updated: 2018/07/29 17:25:16 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int						bn_execve1(char *path, char **bn_tab, t_list *lst)
 		wait(&status);
 	if (father == 0)
 	{
-		g_pid = father;
+		g.g_pid = father;
 		env_tab = env_conv_tab();
 		execve(path, bn_tab, env_tab);
 		ft_deltab(&env_tab);

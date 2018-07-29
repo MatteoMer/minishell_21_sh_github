@@ -6,7 +6,7 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/17 12:10:28 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/07/29 18:04:51 by mmervoye         ###   ########.fr       */
+/*   Updated: 2018/07/29 18:26:37 by mmervoye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int						main(int argc, char **argv, char **env)
 	sig_handler();
 	while (1)
 	{
-		g_pid = 0;
+		g.g_pid = 0;
 		buf = get_buffer(&term);
 		ft_putchar('\n');
 		ast = ps_main(buf);
