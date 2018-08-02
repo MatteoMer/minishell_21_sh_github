@@ -6,7 +6,7 @@
 /*   By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/03 13:14:08 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/06/23 14:39:26 by mmervoye         ###   ########.fr       */
+/*   Updated: 2018/08/02 21:19:59 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static void			blt_setenv2(t_env *tmp, char **cmd, char *str, t_env **env)
 	tmp = (t_env *)malloc(sizeof(t_env));
 	tmp->name = ft_strsub(*cmd, 0, str - (*cmd));
 	tmp->value = ft_strdup(str + 1);
+	tmp->type = 2;
 	blt_add_maillon(env, tmp);
 }
 

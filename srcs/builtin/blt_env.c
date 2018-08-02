@@ -6,7 +6,7 @@
 /*   By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/27 14:06:07 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/06/29 14:33:58 by mmervoye         ###   ########.fr       */
+/*   Updated: 2018/08/02 21:11:29 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,9 +102,12 @@ int					blt_env(char **cmd)
 	{
 		while (env)
 		{
-			ft_putstr(env->name);
-			ft_putstr("=");
-			ft_putendl(env->value);
+			if (env->type == 2)
+			{
+				ft_putstr(env->name);
+				ft_putchar('=');
+				ft_putendl(env->value);
+			}
 			env = env->next;
 		}
 	}

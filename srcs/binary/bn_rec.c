@@ -6,7 +6,7 @@
 /*   By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 10:21:52 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/07/29 17:25:16 by xmazella         ###   ########.fr       */
+/*   Updated: 2018/08/02 21:21:33 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,18 +108,18 @@ int						bn_binary(t_ps_tree *tree)
 	int				i;
 	int				ret;
 
-	i = -1;
 	bn_tab = NULL;
 	cmd_bn_tab = NULL;
 	cmd_bn_tab = bn_convert_list(tree->content);
-	if (access(cmd_bn_tab[0], F_OK) == 0)
-		return (bn_execve1(cmd_bn_tab[0], cmd_bn_tab, tree->content));
+	i = set_varloc(cmd_bn_tab);
+	if (access(cmd_bn_tab[i], F_OK) == 0)
+		return (bn_execve1(cmd_bn_tab[i], cmd_bn_tab, tree->content));
 	if ((blt_check(cmd_bn_tab)) != 0)
 		return (free_and_return(&cmd_bn_tab));
 	bn_tab = ft_sortpath(bn_tab, cmd_bn_tab);
 	if (!bn_tab)
 		return (-1);
-	ret = bn_wrap_exec(bn_tab, &cpath, cmd_bn_tab, tree);
+	ret = bn_wrap_exec(bn_tab, &cpath, cmd_bn_tab + i, tree);
 	ft_deltab(&bn_tab);
 	return (ret);
 }

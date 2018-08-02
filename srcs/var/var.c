@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env_get.c                                          :+:      :+:    :+:   */
+/*   var.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: xmazella <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/24 15:55:27 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/08/02 20:15:06 by xmazella         ###   ########.fr       */
+/*   Created: 2018/08/02 20:58:56 by xmazella          #+#    #+#             */
+/*   Updated: 2018/08/02 21:12:25 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh.h"
 
-char		*env_get(char *path)
+int			set_varloc(char **cmd)
 {
-	t_env		*tmp;
+	int		i;
 
-	tmp = g_env;
-	while (tmp)
+	i = 0;
+	while(cmd[i])
 	{
-		if (!ft_strcmp(path, tmp->name))
-			return (tmp->value);
-		tmp = tmp->next;
+		if (ft_strchr(cmd[i], '=') == NULL)
+			return (i);
+		blt_setenv(cmd, &g_env, 0);
+		i++;
 	}
-	return (NULL);
+	ft_putendl("ldldldld");
+	return (i);
 }
