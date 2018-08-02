@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env_get.c                                          :+:      :+:    :+:   */
+/*   var_list.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: xmazella <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/24 15:55:27 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/08/02 20:04:07 by xmazella         ###   ########.fr       */
+/*   Created: 2018/08/02 17:25:02 by xmazella          #+#    #+#             */
+/*   Updated: 2018/08/02 18:39:19 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh.h"
 
-char		*env_get(char *path)
+t_var	*create_list(char **env)
 {
-	t_env		*tmp;
+	t_var var;
+	t_var tmp;
 
-	tmp = g_env;
-	while (tmp)
+	var = NULL;
+	i = -1;
+	while (env[++i])
 	{
-		if (!ft_strcmp(path, tmp->name))
-			return (tmp->value);
-		tmp = tmp->next;
+		if ((len = ft_strclen(env[i], '=')) == -1)
+			break;
+		var_set(&tmp, env[i] - ft_strlen(env[i] - len), env[i] + len + 1);
+		tmp->next = var;
+		var = tmp;
 	}
-	return (NULL);
+	return (var);
 }

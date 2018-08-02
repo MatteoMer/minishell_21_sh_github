@@ -6,11 +6,11 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/24 00:20:48 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/06/11 14:07:23 by mmervoye         ###   ########.fr       */
+/*   Updated: 2018/08/02 19:58:26 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "env.h"
+#include "sh.h"
 
 t_env		*env_init_empty(void)
 {
