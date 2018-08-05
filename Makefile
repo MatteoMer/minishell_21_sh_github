@@ -6,7 +6,7 @@
 #    By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/21 11:21:35 by mmervoye          #+#    #+#              #
-#    Updated: 2018/08/02 21:08:49 by xmazella         ###   ########.fr        #
+#    Updated: 2018/08/05 20:38:00 by xmazella         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,6 +63,7 @@ SRC_BUILTIN =	srcs/builtin/blt_check.c\
 				srcs/builtin/blt_setenv.c\
 				srcs/builtin/blt_unsetenv.c\
 				srcs/builtin/blt_error.c\
+				srcs/builtin/blt_unset.c\
 				srcs/builtin/blt_cd.c\
 				srcs/builtin/blt_cd_launch.c\
 				srcs/builtin/blt_cd_flag.c\

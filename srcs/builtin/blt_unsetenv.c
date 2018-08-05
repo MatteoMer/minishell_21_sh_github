@@ -6,7 +6,7 @@
 /*   By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/09 13:21:03 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/08/02 20:58:12 by xmazella         ###   ########.fr       */
+/*   Updated: 2018/08/05 21:29:35 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void		free_it_pls(t_env *tmp)
 {
-	tmp->type = 0;
+	tmp->type = EXPORT;
 }
 
 int				blt_unsetenv(char **cmd)

@@ -6,7 +6,7 @@
 /*   By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/27 12:56:23 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/08/05 17:41:07 by xmazella         ###   ########.fr       */
+/*   Updated: 2018/08/05 21:37:54 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,13 @@ int			blt_check(char **cmd)
 	if (ft_strcmp(*cmd, "env") == 0)
 		return (blt_env(cmd + 1));
 	if (ft_strcmp(*cmd, "setenv") == 0)
-		return (blt_setenv(cmd + 1, &(g_env), 2) + 1);
+		return (blt_setenv(cmd + 1, &(g_env), ENV) + 1);
 	if (ft_strcmp(*cmd, "unsetenv") == 0)
 		return (blt_unsetenv(cmd + 1));
+	if (ft_strcmp(*cmd, "unset") == 0)
+		return (blt_unset(cmd + 1));
+	if (ft_strcmp(*cmd, "export") == 0)
+		return (blt_export(cmd + 1));
 	if (ft_strcmp(*cmd, "exit") == 0)
 		blt_exit(cmd + 1);
 	return (0);

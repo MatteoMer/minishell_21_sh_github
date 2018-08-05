@@ -6,13 +6,14 @@
 /*   By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 16:19:15 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/07/09 11:26:15 by mmervoye         ###   ########.fr       */
+/*   Updated: 2018/08/05 20:40:44 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSE_H
 # define PARSE_H
 # include "sh.h"
+# include "var.h"
 
 typedef struct s_env	t_env;
 typedef struct			s_ps_tree
@@ -55,6 +56,7 @@ int						bn_execve1(char *path, char **bn_tab, t_list *lst);
 int						g_status;
 int						blt_error(char **cmd, int i);
 int						blt_env_error(char **cmd, int i);
+t_env					*blt_getenv(char *name, t_env *env);
 int						blt_bn_error(char **cmd1, char **cmd, int i, int ret);
 int						blt_check(char	**cmb_bn_tab);
 int						blt_env(char **cmd);
@@ -62,7 +64,8 @@ t_env					*blt_list_clone(t_env *env);
 char					**blt_conv_tab(t_env *env);
 char					**blt_getpath(t_env *env);
 int						blt_env_check(char **cmd);
-int						blt_setenv(char **cmd, t_env **env, int i);
+int						blt_setenv(char **cmd, t_env **env, t_type type);
+int						blt_unset(char **cmd);
 int						blt_unsetenv(char **cmd);
 void					blt_add_maillon(t_env **alst, t_env *new);
 t_env					*blt_new_list(void);
