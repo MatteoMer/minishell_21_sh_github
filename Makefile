@@ -6,7 +6,7 @@
 #    By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/21 11:21:35 by mmervoye          #+#    #+#              #
-#    Updated: 2018/07/29 15:34:21 by mmervoye         ###   ########.fr        #
+#    Updated: 2018/08/05 20:38:00 by xmazella         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,8 @@ SRC_BINARY =	srcs/binary/bn_rec.c\
 				srcs/redir/wrapper_redir.c\
 				srcs/redir/agreg_redir.c\
 				srcs/pipe/do_pipe.c\
-				srcs/signaux/signal.c
+				srcs/signaux/signal.c\
+				srcs/var/var.c
 
 SRC_BUILTIN =	srcs/builtin/blt_check.c\
 				srcs/builtin/blt_env.c\
@@ -62,6 +63,7 @@ SRC_BUILTIN =	srcs/builtin/blt_check.c\
 				srcs/builtin/blt_setenv.c\
 				srcs/builtin/blt_unsetenv.c\
 				srcs/builtin/blt_error.c\
+				srcs/builtin/blt_unset.c\
 				srcs/builtin/blt_cd.c\
 				srcs/builtin/blt_cd_launch.c\
 				srcs/builtin/blt_cd_flag.c\

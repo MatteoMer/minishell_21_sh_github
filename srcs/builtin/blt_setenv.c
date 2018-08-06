@@ -6,13 +6,13 @@
 /*   By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/03 13:14:08 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/06/23 14:39:26 by mmervoye         ###   ########.fr       */
+/*   Updated: 2018/08/05 19:00:08 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh.h"
 
-static t_env		*blt_getenv(char *name, t_env *env)
+t_env		*blt_getenv(char *name, t_env *env)
 {
 	t_env	*tmp;
 
@@ -34,7 +34,7 @@ static void			blt_setenv2(t_env *tmp, char **cmd, char *str, t_env **env)
 	blt_add_maillon(env, tmp);
 }
 
-int					blt_setenv(char **cmd, t_env **env, int i)
+int					blt_setenv(char **cmd, t_env **env, t_type type)
 {
 	t_env	*tmp;
 	char	*str;
@@ -46,17 +46,18 @@ int					blt_setenv(char **cmd, t_env **env, int i)
 		if (*cmd[0] == '=')
 			return (blt_env_error(cmd, 1));
 		if ((str = ft_strchr(*cmd, '=')) == NULL)
-			return (i);
+			return (1);
 		*str = 0;
 		if ((tmp = blt_getenv(*cmd, *env)) != NULL)
 		{
 			free(tmp->value);
 			tmp->value = ft_strdup(str + 1);
-			i++;
 		}
-		else if (i++ != -42)
+		else
 			blt_setenv2(tmp, cmd, str, env);
+		if (tmp)
+			tmp->type = type;
 		cmd++;
 	}
-	return (i);
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/27 14:06:07 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/06/29 14:33:58 by mmervoye         ###   ########.fr       */
+/*   Updated: 2018/08/05 18:40:02 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,15 +96,18 @@ int					blt_env(char **cmd)
 	}
 	else
 		env = blt_list_clone(g_env);
-	cmd += !cmd[0] ? 0 : blt_setenv(cmd, &env, 0);
+	cmd += !cmd[0] ? 0 : blt_setenv(cmd, &env, ENV);
 	ptr = env;
 	if (blt_exec_env(env, cmd) == 0)
 	{
 		while (env)
 		{
-			ft_putstr(env->name);
-			ft_putstr("=");
-			ft_putendl(env->value);
+			if (env->type == ENV)
+			{
+				ft_putstr(env->name);
+				ft_putchar('=');
+				ft_putendl(env->value);
+			}
 			env = env->next;
 		}
 	}

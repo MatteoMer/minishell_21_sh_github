@@ -6,11 +6,11 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/24 15:55:27 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/07/10 18:24:58 by mmervoye         ###   ########.fr       */
+/*   Updated: 2018/08/02 20:15:06 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "env.h"
+#include "sh.h"
 
 char		*env_get(char *path)
 {
