@@ -6,7 +6,7 @@
 /*   By: xmazella <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 16:38:16 by xmazella          #+#    #+#             */
-/*   Updated: 2018/08/06 23:00:24 by xmazella         ###   ########.fr       */
+/*   Updated: 2018/08/07 21:51:50 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,16 @@ int			blt_export_env(char **cmd)
 
 	while (*cmd != NULL)
 	{
-		if (ft_strchr(*cmd, '=') == NULL || (ft_strchr(*cmd, '=') + 1) == NULL)
+		if (ft_strchr(*cmd, '=') == NULL || (ft_strchr(*cmd, '=') && (*cmd)[ft_strlen(*cmd) - 1] == '='))
 		{
 			tmp = blt_getenv(*cmd, g_env);
 			if (tmp == NULL)
 			{
-				str = ft_strjoin(*cmd, *cmd[ft_strlen(*cmd) - 1] == '=' ?\
-"''" : "=''");
-				add_varloc(str, EXPORT);
+				if ((*cmd)[ft_strlen(*cmd) - 1] != '=')
+					str = ft_strjoin(*cmd, "=");
+				else
+					str = ft_strdup(*cmd);
+				add_varloc(str, EXPORT);;
 			}
 			else
 				blt_change_type(*cmd, ENV);
