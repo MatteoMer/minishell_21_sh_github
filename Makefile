@@ -6,7 +6,7 @@
 #    By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/21 11:21:35 by mmervoye          #+#    #+#              #
-#    Updated: 2018/08/05 20:38:00 by xmazella         ###   ########.fr        #
+#    Updated: 2018/08/06 22:57:08 by xmazella         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,7 +68,9 @@ SRC_BUILTIN =	srcs/builtin/blt_check.c\
 				srcs/builtin/blt_cd_launch.c\
 				srcs/builtin/blt_cd_flag.c\
 				srcs/builtin/blt_cd_normalize.c\
-				srcs/builtin/blt_free_env.c
+				srcs/builtin/blt_free_env.c\
+				srcs/builtin/blt_export.c\
+				srcs/builtin/blt_export2.c
 
 SRC = $(SRC_TERM) $(SRC_LX) $(SRC_PS) $(SRC_CORE) $(SRC_ENV) $(SRC_BINARY) \
 	  $(SRC_BUILTIN) $(SRC_REDIR)

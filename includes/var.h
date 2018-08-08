@@ -6,7 +6,7 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/24 00:22:48 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/08/05 18:38:59 by xmazella         ###   ########.fr       */
+/*   Updated: 2018/08/06 22:56:00 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,13 @@ typedef	struct			s_env
 	struct 	s_env		*next;
 }						t_env;
 
-t_list						*set_varloc(t_list *tmp);
-
+t_list					*set_varloc(t_list *tmp);
+void					add_varloc(char *cmd, t_type type);
 char					*env_get(char *path);
+int						blt_export_error(char *cmd, int i);
+int						blt_print_flag(char **cmd);
 char					**env_conv_tab(void);
+int						blt_change_type(char *name, t_type type);
 t_env					*env_init(char **environ);
 t_env					*env_parse_tab(char **environ);
 t_env					*env_new_node(void);

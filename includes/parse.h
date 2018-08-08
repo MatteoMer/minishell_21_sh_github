@@ -6,7 +6,7 @@
 /*   By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 16:19:15 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/08/05 20:40:44 by xmazella         ###   ########.fr       */
+/*   Updated: 2018/08/06 16:34:02 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ int						blt_env(char **cmd);
 t_env					*blt_list_clone(t_env *env);
 char					**blt_conv_tab(t_env *env);
 char					**blt_getpath(t_env *env);
+int						blt_export(char **cmd);
 int						blt_env_check(char **cmd);
 int						blt_setenv(char **cmd, t_env **env, t_type type);
 int						blt_unset(char **cmd);

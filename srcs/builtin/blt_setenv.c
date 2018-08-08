@@ -6,7 +6,7 @@
 /*   By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/03 13:14:08 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/08/05 19:00:08 by xmazella         ###   ########.fr       */
+/*   Updated: 2018/08/06 22:58:07 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,12 @@ t_env		*blt_getenv(char *name, t_env *env)
 	return (NULL);
 }
 
-static void			blt_setenv2(t_env *tmp, char **cmd, char *str, t_env **env)
+static void			blt_setenv2(t_env *tmp, char **cmd, char *str, t_env **env, t_type type)
 {
 	tmp = (t_env *)malloc(sizeof(t_env));
 	tmp->name = ft_strsub(*cmd, 0, str - (*cmd));
 	tmp->value = ft_strdup(str + 1);
+	tmp->type = type;
 	blt_add_maillon(env, tmp);
 }
 
@@ -54,7 +55,7 @@ int					blt_setenv(char **cmd, t_env **env, t_type type)
 			tmp->value = ft_strdup(str + 1);
 		}
 		else
-			blt_setenv2(tmp, cmd, str, env);
+			blt_setenv2(tmp, cmd, str, env, type);
 		if (tmp)
 			tmp->type = type;
 		cmd++;
