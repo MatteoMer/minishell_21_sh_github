@@ -6,27 +6,27 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/24 00:22:48 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/08/06 22:56:00 by xmazella         ###   ########.fr       */
+/*   Updated: 2018/08/08 17:48:52 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ENV_H
-# define ENV_H
+#ifndef VAR_H
+# define VAR_H
 # include "sh.h"
 
-typedef enum			s_type
+typedef enum		e_type
 {
 	LOCALE,
 	EXPORT,
 	ENV
-}						t_type;
+}					t_type;
 
 typedef	struct			s_env
 {
 	char				*name;
 	char				*value;
-	enum	s_type		type;
-	struct 	s_env		*next;
+	enum e_type			type;
+	struct s_env		*next;
 }						t_env;
 
 t_list					*set_varloc(t_list *tmp);

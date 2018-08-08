@@ -6,7 +6,7 @@
 /*   By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 10:21:52 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/08/05 21:32:59 by xmazella         ###   ########.fr       */
+/*   Updated: 2018/08/08 18:05:19 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int						bn_execve1(char *path, char **bn_tab, t_list *lst)
 		wait(&status);
 	if (father == 0)
 	{
-		g.g_pid = father;
+		g_glob.g_pid = father;
 		env_tab = env_conv_tab();
 		execve(path, bn_tab, env_tab);
 		ft_deltab(&env_tab);
@@ -107,14 +107,12 @@ int						bn_binary(t_ps_tree *tree)
 	char			**bn_tab;
 	char			**cmd_bn_tab;
 	char			*cpath;
-//	int				i;
 	int				ret;
 
 	bn_tab = NULL;
 	cmd_bn_tab = NULL;
 	if ((cmd_bn_tab = bn_convert_list(tree->content)) == NULL)
 		return (0);
-//	i = set_varloc(cmd_bn_tab);
 	if (access(cmd_bn_tab[0], F_OK) == 0)
 		return (bn_execve1(cmd_bn_tab[0], cmd_bn_tab, tree->content));
 	if ((blt_check(cmd_bn_tab)) != 0)

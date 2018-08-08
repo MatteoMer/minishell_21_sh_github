@@ -6,7 +6,7 @@
 /*   By: xmazella <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/02 20:58:56 by xmazella          #+#    #+#             */
-/*   Updated: 2018/08/06 22:58:35 by xmazella         ###   ########.fr       */
+/*   Updated: 2018/08/08 17:08:03 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 
 void			add_varloc(char *str, t_type type)
 {
-	char 		**split;
+	char		**split;
 	char		*string;
 	t_env		*tmp;
-	
+
 	split = (char **)malloc(sizeof(char *) * 2);
 	split[0] = ft_strdup(str);
 	split[1] = 0;

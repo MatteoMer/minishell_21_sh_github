@@ -6,16 +6,15 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 14:05:23 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/07/25 22:28:48 by matteo           ###   ########.fr       */
+/*   Updated: 2018/08/08 17:21:20 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lexer.h"
-#include <stdio.h> //
 
 static int				lx_wlenquote(char *buf)
 {
-	int		i;
+	int			i;
 	char		c;
 
 	i = 0;

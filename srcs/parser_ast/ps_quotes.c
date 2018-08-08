@@ -6,7 +6,7 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 18:42:29 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/07/25 22:31:24 by matteo           ###   ########.fr       */
+/*   Updated: 2018/08/08 17:25:06 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ int				ps_quotes(t_list **tokens)
 	tmp = *tokens;
 	while ((*tokens)->next)
 	{
-		if ((*tokens)->content && ((((char *)(*tokens)->content))[0] \
-== '\"' || (((char *)(*tokens)->content))[0] == 39))
+		if ((*tokens)->content && ((((char *)(*tokens)->content))[0]\
+					== '\"' || (((char *)(*tokens)->content))[0] == 39))
 			if (((*tokens)->content = ps_realloc_quote(*tokens)) == NULL)
 				return (-1);
 		*tokens = (*tokens)->next;

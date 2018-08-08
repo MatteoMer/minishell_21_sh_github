@@ -6,7 +6,7 @@
 /*   By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/17 12:31:04 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/08/05 18:46:11 by xmazella         ###   ########.fr       */
+/*   Updated: 2018/08/08 17:51:39 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ typedef struct	s_global
 	pid_t		g_pid;
 }				t_global;
 
-t_global		g;
-
+t_global		g_glob;
 
 #endif

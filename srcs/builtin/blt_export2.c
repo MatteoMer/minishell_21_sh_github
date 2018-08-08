@@ -6,7 +6,7 @@
 /*   By: xmazella <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 22:50:09 by xmazella          #+#    #+#             */
-/*   Updated: 2018/08/06 22:57:54 by xmazella         ###   ########.fr       */
+/*   Updated: 2018/08/08 17:18:43 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ int		blt_print_flag(char **cmd)
 
 	tmp = g_env;
 	while (tmp)
-	{	
+	{
 		if (((*cmd == NULL || !ft_strncmp(*cmd, tmp->name, ft_strlen(*cmd))) &&\
-					(tmp->type == EXPORT || tmp->type == ENV) ))
+			(tmp->type == EXPORT || tmp->type == ENV)))
 		{
 			ft_putstr("export ");
 			ft_putstr(tmp->name);
@@ -63,4 +63,3 @@ int		blt_change_type(char *name, t_type type)
 	}
 	return (0);
 }
-

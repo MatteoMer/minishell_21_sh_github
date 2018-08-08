@@ -6,7 +6,7 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/09 17:26:11 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/07/26 21:45:18 by matteo           ###   ########.fr       */
+/*   Updated: 2018/08/08 17:22:31 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ static int			exec_agreg_input(t_list *lst, int out)
 	dup2(out, s_op);
 	close(out);
 	return (0);
-
 }
 
 int					exec_agreg(t_list *lst, int out, int op)

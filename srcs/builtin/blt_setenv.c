@@ -6,13 +6,13 @@
 /*   By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/03 13:14:08 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/08/06 22:58:07 by xmazella         ###   ########.fr       */
+/*   Updated: 2018/08/08 17:13:22 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh.h"
 
-t_env		*blt_getenv(char *name, t_env *env)
+t_env				*blt_getenv(char *name, t_env *env)
 {
 	t_env	*tmp;
 
@@ -26,7 +26,8 @@ t_env		*blt_getenv(char *name, t_env *env)
 	return (NULL);
 }
 
-static void			blt_setenv2(t_env *tmp, char **cmd, char *str, t_env **env, t_type type)
+static void			blt_setenv2(t_env *tmp, char **cmd, char *str, \
+		t_env **env, t_type type)
 {
 	tmp = (t_env *)malloc(sizeof(t_env));
 	tmp->name = ft_strsub(*cmd, 0, str - (*cmd));
