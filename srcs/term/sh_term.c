@@ -6,7 +6,7 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/29 13:55:41 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/08/08 19:25:54 by mdelory          ###   ########.fr       */
+/*   Updated: 2018/08/09 16:49:14 by mdelory          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,22 +65,31 @@ void			term_write_prompt(t_term *term)
 	write(1, "> ", 2);
 	ft_putstr(ptr2);
 	term_exec_tc("ce");
-	term_exec_tc("do");
 	free(ptr);
 }
 
 void			term_refresh(t_term *term)
 {
-	int			x;
+	char		*ptr;
+	char		*ptr1;
+	char		*ptr2;
+	int			offset;
 	int			y;
 
-	x = ft_strlen(term->line_edit.prompt) + term->line_edit.len;
-	y = x / term->wsize.ws_col;
-	if (term->row + y >= term->wsize.ws_row)
+	offset = ft_strlen(term->line_edit.prompt);
+	ptr = term->line_edit.text;
+	ptr2 = ptr;
+	y = 0;
+	while ((ptr1 = ft_strchr(ptr2, '\n')))
+	{
+		y += 1 + ((offset + (ptr1 - ptr2)) / term->wsize.ws_col);
+		ptr2 = ptr1 + 1;
+	}
+	y += 1 + (ft_strlen(ptr2) / term->wsize.ws_col);
+	if (term->row + y > term->wsize.ws_row)
 	{
 		term_exec_tc("sf");
-		if (term->row > 0)
-			term->row--;
+		term->row--;
 	}
 }
 
