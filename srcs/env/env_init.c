@@ -6,7 +6,7 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/24 00:20:48 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/08/02 20:27:13 by xmazella         ###   ########.fr       */
+/*   Updated: 2018/08/09 18:11:04 by mmervoye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,11 @@ t_env		*env_init_empty(void)
 
 	if ((env = env_new_node()) == NULL)
 		return (NULL);
-	env->name = ft_strdup("PWD");
+	if ((env->name = ft_strdup("PWD")) == NULL)
+		malloc_error();
 	getcwd(pwd, PATH_MAX);
-	env->value = ft_strdup(pwd);
+	if ((env->value = ft_strdup(pwd)) == NULL)
+		malloc_error();
 	if (!env->name || !env->value)
 		return (NULL);
 	return (env);
@@ -59,7 +61,8 @@ t_env		*env_parse_tab(char **environ)
 			break ;
 		tmp->name = ft_strnew(len);
 		ft_strncpy(tmp->name, environ[i], len);
-		tmp->value = ft_strdup((environ[i] + len + 1));
+		if ((tmp->value = ft_strdup((environ[i] + len + 1))) == NULL)
+			malloc_error();
 		tmp->type = 2;
 		tmp->next = env;
 		env = tmp;

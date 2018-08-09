@@ -6,7 +6,7 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/08 17:41:25 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/08/08 18:36:01 by mmervoye         ###   ########.fr       */
+/*   Updated: 2018/08/09 18:09:20 by mmervoye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,14 @@ int					blt_read_r(char **cmd)
 
 	i = 0;
 	get_next_line(0, &line);
-	split = ft_strsplit(line, ' ');
+	if ((split = ft_strsplit(line, ' ')) == NULL)
+		malloc_error();
 	while (*cmd && split[i])
 	{
-		str = ft_strjoin(*cmd, "=");
-		str = ft_strjoinf(str, split[i]);
+		if ((str = ft_strjoin(*cmd, "=")) == NULL)
+			malloc_error();
+		if ((str = ft_strjoinf(str, split[i])) == NULL)
+			malloc_error();
 		add_varloc(str, LOCALE);
 		ft_strdel(&str);
 		cmd++;

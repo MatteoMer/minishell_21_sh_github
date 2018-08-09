@@ -6,7 +6,7 @@
 /*   By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/29 12:56:08 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/06/22 18:54:18 by mmervoye         ###   ########.fr       */
+/*   Updated: 2018/08/09 18:04:20 by mmervoye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,18 @@ static char		*blt_cd_join(char **s)
 	char	*str;
 	int		i;
 
-	str = ft_strnew(1);
+	if ((str = ft_strnew(1)) == NULL)
+		malloc_error();
 	str[0] = '/';
 	i = 0;
 	if (!s)
 		return (str);
 	while (s[i])
 	{
-		str = ft_strjoinf(str, s[i]);
-		str = ft_strjoinf(str, "/");
+		if ((str = ft_strjoinf(str, s[i])) == NULL)
+			malloc_error();
+		if ((str = ft_strjoinf(str, "/")) == NULL)
+			malloc_error();
 		i++;
 	}
 	return (str);
@@ -80,7 +83,8 @@ static char		*blt_cd_normalize_step2(char *s)
 	int		i;
 
 	i = 0;
-	ft_tab = ft_strsplit(s, '/');
+	if ((ft_tab = ft_strsplit(s, '/')) == NULL)
+		malloc_error();
 	ft_tab = blt_cd_sort(ft_tab);
 	str = blt_cd_join(ft_tab);
 	ft_deltab(&ft_tab);

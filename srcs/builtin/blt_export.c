@@ -6,7 +6,7 @@
 /*   By: xmazella <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 16:38:16 by xmazella          #+#    #+#             */
-/*   Updated: 2018/08/07 21:51:50 by xmazella         ###   ########.fr       */
+/*   Updated: 2018/08/09 18:08:50 by mmervoye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,10 @@ int			blt_export_env(char **cmd)
 			if (tmp == NULL)
 			{
 				if ((*cmd)[ft_strlen(*cmd) - 1] != '=')
-					str = ft_strjoin(*cmd, "=");
+				{
+					if ((str = ft_strjoin(*cmd, "=")) == NULL)
+						malloc_error();
+				}
 				else
 					str = ft_strdup(*cmd);
 				add_varloc(str, EXPORT);;

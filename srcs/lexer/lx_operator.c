@@ -6,7 +6,7 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 13:40:22 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/04/18 19:48:30 by mmervoye         ###   ########.fr       */
+/*   Updated: 2018/08/09 18:13:38 by mmervoye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,11 @@ int						lx_new_op(char *buf, t_list **tokens)
 	t_list		*new;
 	int			check;
 
-	new = ft_lstnew(NULL, 0);
+	if ((new = ft_lstnew(NULL, 0)) == NULL)
+		malloc_error();
 	check = lx_check_op(buf);
-	new->content = check ? ft_strnew(2) : ft_strnew(1);
+	if ((new->content = check ? ft_strnew(2) : ft_strnew(1)) == NULL)
+		malloc_error();
 	((char *)new->content)[0] = *buf;
 	((char *)new->content)[1] = check ? *buf : '\0';
 	if (check)

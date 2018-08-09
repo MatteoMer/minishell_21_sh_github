@@ -6,7 +6,7 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 13:14:43 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/06/29 11:41:07 by mmervoye         ###   ########.fr       */
+/*   Updated: 2018/08/09 18:12:53 by mmervoye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ char			*lx_strdup(char *buf)
 	char		*str;
 	int			i;
 
-	str = ft_strnew(lx_wlen(buf));
+	if ((str = ft_strnew(lx_wlen(buf))) == NULL)
+		malloc_error();
 	i = -1;
 	while (buf[++i])
 	{

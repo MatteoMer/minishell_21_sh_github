@@ -6,7 +6,7 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/09 10:46:58 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/08/09 17:32:36 by mmervoye         ###   ########.fr       */
+/*   Updated: 2018/08/09 18:17:17 by mmervoye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ static int			exec_heredoc(int out, char *name)
 	char	*tmp;
 
 	(void)out;
-	tmp = ft_strnew(1);
+	if ((tmp = ft_strnew(1)) == NULL)
+		malloc_error();
 	fd = open(".heredoc_tmp", O_CREAT | O_TRUNC | O_WRONLY, S_IRWXU | S_IRWXG);
 	while (1)
 	{

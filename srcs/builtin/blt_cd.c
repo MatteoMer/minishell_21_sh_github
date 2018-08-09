@@ -6,7 +6,7 @@
 /*   By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/03 10:57:58 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/08/08 20:01:10 by mmervoye         ###   ########.fr       */
+/*   Updated: 2018/08/09 18:02:28 by mmervoye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,8 @@ int				blt_cd(char **cmd)
 		cpath = blt_cd_check_cdpath(cmd[index]);
 	else if (cmd[index])
 		cpath = blt_cd_normalize_path(cmd[index]);
+	if (cpath == NULL)
+		malloc_error();
 	if (flags != 'P')
 		return (blt_cd_execve_opt(cpath, 0));
 	else

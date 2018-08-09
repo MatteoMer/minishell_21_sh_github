@@ -6,7 +6,7 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/09 09:16:22 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/07/13 13:56:03 by xmazella         ###   ########.fr       */
+/*   Updated: 2018/08/09 18:14:25 by mmervoye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ int				lx_new_redir(char *buf, t_list **tokens)
 
 	len = 0;
 	c = buf + 1;
-	new = ft_lstnew(NULL, 0);
+	if ((new = ft_lstnew(NULL, 0)) == NULL)
+		malloc_error();
 	if (*buf == '<')
 		new->content_size = 5;
 	if (*buf == '>')

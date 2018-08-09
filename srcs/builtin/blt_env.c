@@ -6,7 +6,7 @@
 /*   By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/27 14:06:07 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/08/05 18:40:02 by xmazella         ###   ########.fr       */
+/*   Updated: 2018/08/09 18:07:17 by mmervoye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int					blt_execve(char *path, char **cmd, t_env *env)
 
 	status = 0;
 	father = fork();
+	if (father < 1)
+		return (-1);
 	if (father > 0)
 		waitpid(father, &status, 0);
 	if (father == 0)
@@ -59,7 +61,8 @@ static int			blt_exec_full_path(char *str, t_env *env, char **cmd)
 	char *cpath;
 
 	cpath = NULL;
-	cpath = ft_strdup(str);
+	if ((cpath = ft_strdup(str)) == NULL)
+		malloc_error();
 	if (access(cpath, F_OK) == 0)
 		blt_execve(cpath, cmd, env);
 	else

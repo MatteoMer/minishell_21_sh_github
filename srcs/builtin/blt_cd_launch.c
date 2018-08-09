@@ -6,7 +6,7 @@
 /*   By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/25 13:35:34 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/08/08 20:00:36 by mmervoye         ###   ########.fr       */
+/*   Updated: 2018/08/09 18:03:40 by mmervoye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ int		blt_cd_launch_sp(int flags, int n)
 	{
 		if (env_get("HOME") == NULL)
 			return (blt_cd_error(1, NULL));
-		path = ft_strdup(env_get("HOME"));
+		if ((path = ft_strdup(env_get("HOME"))) == NULL)
+			malloc_error();
 		ret = blt_cd_launch(path, flags == 'P' ? 1 : 0);
 		free(path);
 		return (ret);
@@ -30,7 +31,8 @@ int		blt_cd_launch_sp(int flags, int n)
 	{
 		if (env_get("OLDPWD") == NULL)
 			return (blt_cd_error(3, NULL));
-		path = ft_strdup(env_get("OLDPWD"));
+		if ((path = ft_strdup(env_get("OLDPWD"))) == NULL)
+			malloc_error();
 		ret = blt_cd_launch(path, flags == 'P' ? 1 : 0);
 		free(path);
 		return (ret);

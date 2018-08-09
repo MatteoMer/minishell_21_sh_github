@@ -6,7 +6,7 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 14:05:23 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/07/25 22:28:48 by matteo           ###   ########.fr       */
+/*   Updated: 2018/08/09 18:13:51 by mmervoye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,10 @@ int						lx_quote(char *buf, t_list **tokens)
 	if ((len = lx_wlenquote(buf)) == -1)
 		return (-1);
 	i = 0;
-	new = ft_lstnew(NULL, 0);
-	new->content = ft_strnew(len + 1);
+	if ((new = ft_lstnew(NULL, 0)) == NULL)
+		malloc_error();
+	if ((new->content = ft_strnew(len + 1)) == NULL)
+		malloc_error();
 	new->content_size = 3;
 	++len;
 	while (len--)

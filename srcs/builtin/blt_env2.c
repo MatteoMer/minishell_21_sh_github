@@ -6,7 +6,7 @@
 /*   By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/29 14:23:18 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/08/05 18:01:29 by xmazella         ###   ########.fr       */
+/*   Updated: 2018/08/09 18:07:56 by mmervoye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,12 @@ t_env		*blt_list_clone(t_env *env)
 	tmp = env;
 	while (tmp)
 	{
-		new = (t_env *)malloc(sizeof(t_env));
-		new->name = ft_strdup(tmp->name);
-		new->value = ft_strdup(tmp->value);
+		if ((new = (t_env *)malloc(sizeof(t_env))) == NULL)
+			malloc_error();
+		if ((new->name = ft_strdup(tmp->name)) == NULL)
+			malloc_error();
+		if ((new->value = ft_strdup(tmp->value)) == NULL)
+			malloc_error();
 		new->type = tmp->type;
 		blt_add_maillon(&out, new);
 		tmp = tmp->next;
@@ -57,9 +60,8 @@ char		**blt_getpath(t_env *env)
 	}
 	if (!str)
 		return (NULL);
-	blt_tab = ft_strsplit(str, ':');
-	if (!blt_tab)
-		return (NULL);
+	if ((blt_tab = ft_strsplit(str, ':')) == NULL)
+		malloc_error();
 	return (blt_tab);
 }
 
@@ -71,8 +73,10 @@ char		*blt_env_access(char **cmd, char *str, char **path, t_env *env)
 	ptr = path;
 	while (*path != NULL)
 	{
-		tmp = ft_strjoinf(*path++, "/");
-		tmp = ft_strjoinf(tmp, str);
+		if ((tmp = ft_strjoinf(*path++, "/")) == NULL)
+			malloc_error();
+		if ((tmp = ft_strjoinf(tmp, str)) == NULL)
+			malloc_error();
 		if (access(tmp, F_OK) == 0)
 		{
 			blt_execve(tmp, cmd, env);
@@ -103,9 +107,12 @@ char		**blt_conv_tab(t_env *env)
 	i = 0;
 	while (tmp)
 	{
-		tmp_n = ft_strdup(tmp->name);
-		tmp_n = ft_strjoinf(tmp_n, "=");
-		env_tab[i] = ft_strjoinf(tmp_n, tmp->value);
+		if ((tmp_n = ft_strdup(tmp->name)) == NULL)
+			malloc_error();
+		if ((tmp_n = ft_strjoinf(tmp_n, "=")) == NULL)
+			malloc_error();
+		if ((env_tab[i] = ft_strjoinf(tmp_n, tmp->value)) == NULL)
+			malloc_error();
 		tmp = tmp->next;
 		i++;
 	}

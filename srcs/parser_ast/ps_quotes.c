@@ -6,7 +6,7 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 18:42:29 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/07/25 22:31:24 by matteo           ###   ########.fr       */
+/*   Updated: 2018/08/09 18:15:52 by mmervoye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,8 @@ static char		*ps_realloc_quote(t_list *node)
 
 	i = -1;
 	cur = node->content;
-	ret = ft_strnew(ft_strlen(cur) - 2);
-	if (!ret)
-		return (NULL);
+	if ((ret = ft_strnew(ft_strlen(cur) - 2)) == NULL)
+		malloc_error();
 	cur++;
 	while (++i < ft_strlen(cur) - 1)
 		ret[i] = cur[i];
