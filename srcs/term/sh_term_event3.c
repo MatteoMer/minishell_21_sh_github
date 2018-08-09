@@ -6,7 +6,7 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/29 13:55:41 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/08/05 17:28:51 by mdelory          ###   ########.fr       */
+/*   Updated: 2018/08/09 19:25:14 by mmervoye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int				term_evt_cancel(t_term *term)
 {
 	term_le_clear(&term->line_edit);
 	term->ctn = 0;
+	term_exec_tc("cr");
 	return (0);
 }
 
