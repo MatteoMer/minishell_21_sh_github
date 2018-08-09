@@ -6,7 +6,7 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 17:35:34 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/06/29 14:46:10 by mmervoye         ###   ########.fr       */
+/*   Updated: 2018/08/09 16:40:26 by mmervoye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ char				**ft_sortpath(char **bn_tab, char **cmd_bn_tab)
 		ft_deltab(&cmd_bn_tab);
 		return (NULL);
 	}
-	bn_tab = ft_strsplit(env_get("PATH"), ':');
+	if ((bn_tab = ft_strsplit(env_get("PATH"), ':')) == NULL)
+		malloc_error();
 	return (bn_tab);
 }
 
@@ -56,6 +57,7 @@ int					bn_rec(t_ps_tree *tree, char op)
 			bn_rec(tree->right, tree->op_number);
 	}
 	else if (op != '|')
-		ret = exec_wrapper(tree);
+		if ((ret = exec_wrapper(tree)) == -1)
+			return (-1);
 	return (0);
 }

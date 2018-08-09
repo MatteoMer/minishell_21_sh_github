@@ -6,7 +6,7 @@
 /*   By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/03 10:57:58 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/06/25 00:41:40 by matteo           ###   ########.fr       */
+/*   Updated: 2018/08/08 20:01:10 by mmervoye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@ static char		*blt_cd_check_cdpath(char *str)
 	char	*cpath;
 
 	cpath = NULL;
-	cpath = ft_strjoin(env_get("CDPATH"), "/");
-	cpath = ft_strjoinf(cpath, str);
+	if ((cpath = ft_strjoin(env_get("CDPATH"), "/")) == NULL)
+		malloc_error();
+	if ((cpath = ft_strjoinf(cpath, str)) == NULL)
+		malloc_error();
 	if (access(cpath, F_OK) != 0)
 	{
 		free(cpath);
@@ -46,13 +48,16 @@ static char		*blt_cd_set_curpath(char *s)
 	pwd = env_get("PWD");
 	if (*s != '/')
 	{
-		pwd = blt_cd_normalize_path(pwd);
+		if ((pwd = blt_cd_normalize_path(pwd)) == NULL)
+			malloc_error();
 		tmp = s;
-		s = ft_strjoinf(pwd, s);
+		if ((s = ft_strjoinf(pwd, s)) == NULL)
+			malloc_error();
 		free(tmp);
 	}
 	tmp = s;
-	s = blt_cd_normalize_path(s);
+	if ((s = blt_cd_normalize_path(s)) == NULL)
+		malloc_error();
 	free(tmp);
 	return (s);
 }
@@ -67,7 +72,8 @@ static int		blt_cd_execve_opt(char *cpath, int i)
 		if (!cpath)
 			return (-1);
 		tmp = cpath;
-		cpath = blt_cd_normalize(cpath);
+		if ((cpath = blt_cd_normalize(cpath)) == NULL)
+			malloc_error();
 		free(tmp);
 		if (access(cpath, F_OK) != 0)
 			return (blt_cd_error(2, cpath));
@@ -75,6 +81,7 @@ static int		blt_cd_execve_opt(char *cpath, int i)
 	}
 	else
 	{
+
 		if (access(cpath, F_OK) != 0)
 			return (blt_cd_error(2, cpath));
 		blt_cd_launch(cpath, 1);

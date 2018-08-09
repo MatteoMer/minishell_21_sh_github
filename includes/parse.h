@@ -6,7 +6,7 @@
 /*   By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 16:19:15 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/08/06 16:34:02 by xmazella         ###   ########.fr       */
+/*   Updated: 2018/08/09 16:56:15 by mmervoye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,14 @@ int						blt_cd_error(int i, char *str);
 int						blt_cd_launch(char *path, int nb);
 int						blt_cd_launch_sp(int flags, int n);
 int						blt_cd_flag(char **cmd, int *index);
+int						blt_read(char **cmd);
+int						blt_read_r(char **cmd);
+int						blt_read_option(char **cmd);
 char					*blt_cd_normalize(char *s);
 int						blt_cd_error(int i, char *str);
 void					blt_free_env(t_env **ptr);
+int						fork_exec_blt(char **cmd);
+int						redir_blt_exec(char **cmd, t_ps_tree *tree);
 int						blt_execve(char *path, char **cmd, t_env *env);
 char					*blt_env_access(char **cmd, char *str,\
 char **path, t_env *env);
@@ -88,5 +93,6 @@ void					sig_handler_int(int signo);
 void					sig_handler();
 int						redir_exec(char **bn_tab, char **cpath,\
 char **cmd_bn_tab, t_ps_tree *tree);
+int						bn_wrap_blt(char **cmd, t_ps_tree *tree);
 
 #endif

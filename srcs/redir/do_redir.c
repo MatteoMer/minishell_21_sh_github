@@ -6,11 +6,30 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/09 09:49:22 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/07/11 14:01:35 by mmervoye         ###   ########.fr       */
+/*   Updated: 2018/08/09 16:49:40 by mmervoye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh.h"
+
+int					redir_blt_exec(char **cmd, t_ps_tree *tree)
+{
+	pid_t			c_pid;
+	int				ret;
+
+	if ((c_pid = fork()) == -1)
+		return (-1);
+	if (c_pid == 0)
+	{
+		do_redir(tree->content);
+		fork_exec_blt(cmd);
+		exit(0);
+	}
+	if (waitpid(c_pid, &ret, 0) < 0)
+		return (-1);
+	return (ret);
+
+}
 
 int					redir_exec(char **bn_tab, char **cpath,\
 	char **cmd_bn_tab, t_ps_tree *tree)

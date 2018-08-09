@@ -6,7 +6,7 @@
 /*   By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/27 12:56:23 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/08/06 16:48:59 by xmazella         ###   ########.fr       */
+/*   Updated: 2018/08/09 16:42:56 by mmervoye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ static int	blt_echo(char **cmb)
 	while (cmb[i])
 	{
 		ft_putstr(cmb[i]);
-		ft_putchar(' ');
+		if (cmb[i + 1])
+			ft_putchar(' ');
 		i++;
 	}
 	ft_putchar('\n');
@@ -50,6 +51,8 @@ int			blt_check(char **cmd)
 		return (blt_unset(cmd + 1));
 	if (ft_strcmp(*cmd, "export") == 0)
 		return (blt_export(cmd + 1));
+	if (ft_strcmp(*cmd, "read") == 0)
+		return (blt_read(cmd + 1));
 	if (ft_strcmp(*cmd, "exit") == 0)
 		blt_exit(cmd + 1);
 	return (0);

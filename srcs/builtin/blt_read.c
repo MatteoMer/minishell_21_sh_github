@@ -5,101 +5,64 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/11 16:24:31 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/07/19 13:42:33 by mmervoye         ###   ########.fr       */
+/*   Created: 2018/08/08 17:06:47 by mmervoye          #+#    #+#             */
+/*   Updated: 2018/08/08 19:19:44 by mmervoye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh.h"
 
-void				option_read(char **cmd)
+char				**blt_read_parse(void)
 {
-	char		*line;
-	char		**set;
-	char		**args;
-	int			i;
-
-	i = 0;
-	get_next_line(0, &line);
-	args = ft_strsplit(line, ' ');
-	while (*cmd)
-	{
-		set = (char **)malloc(sizeof(char *) * 2);
-		set[0] = ft_strjoin(*cmd, "=");
-		if (args[i])
-			set[0] = ft_strjoinf(set[0], args[i]);
-		else
-			set[0] = ft_strjoinf(set[0], "");
-		set[1] = NULL;
-		blt_setenv(set, &g_env, 0);
-		cmd++;
-		i++;
-		ft_deltab(&set);
-	}
-	ft_strdel(&line);
-	ft_deltab(&args);
-}
-
-char				*get_line(void)
-{
-	char		buf;
-	char		line[LINE_MAX];
-	int			stop;
 	int			bs;
-	int			i;
+	char		*line;
+	char		*buf;
 
-	i = 0;
-	stop = 0;
 	bs = 0;
-	while (stop == 0)
+	line = ft_strnew(1);
+	while (1)
 	{
 		read(0, &buf, 1);
-		if (buf == '\\')
+		if (buf[0] == '\\')
+		{
+			ft_putendl("coucou");
 			bs = 1;
-		else
+		}
+		if (buf[0] == '\n' && bs == 0)
+			break ;
+		if ((line = ft_strjoinf(line, buf)) == NULL)
+			return (NULL);
+		if (bs && buf[0] != '\\')
 			bs = 0;
-		if (bs == 0 && buf == '\n')
-			stop = 1;
-		if (!bs)
-			line[i] = buf;
-		i++;
 	}
-	line[i - 1] = 0;
-	return (ft_strdup(line));
+	return (NULL);
 }
 
-void				basic_read(char **cmd)
+int					blt_do_read(char **cmd)
 {
-	char			*line;
+	char		**line;
 
-	line = get_line();
-	ft_putendl("here");
-	ft_putendl("");
-	ft_putendl("");
-	ft_putendl("");
-	ft_putendl(line);
-	(void)cmd;
+	line = cmd;
+	if ((line = blt_read_parse()) == NULL)
+		return (-1);
+	return (0);
 }
 
 int					blt_read(char **cmd)
 {
-	pid_t			pid;
+	char		*tmp;
 
-	if (*cmd == NULL)
+	if (*cmd && *cmd[0] == '-')
+		blt_read_option(cmd);
+	else if (*cmd)
 	{
-		get_next_line(0, NULL);
-		return (0);
+		if ((blt_do_read(cmd)) == -1)
+			return (-1);
 	}
-	pid = fork();
-	if (pid == 0)
+	else
 	{
-		if (!ft_strcmp(*cmd, "-r"))
-			option_read(cmd + 1);
-		else
-			basic_read(cmd);
-		exit(0);
+		get_next_line(0, &tmp);
+		free(tmp);
 	}
-	if (waitpid(pid, 0, 0) < 0)
-		return (-1);
 	return (1);
 }
