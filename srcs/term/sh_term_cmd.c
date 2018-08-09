@@ -6,7 +6,7 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/29 13:55:41 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/07/12 19:55:41 by mdelory          ###   ########.fr       */
+/*   Updated: 2018/08/07 20:11:22 by mdelory          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void				term_exec_goto(char *str, int x, int y)
 	write(1, s, ft_strlen(s));
 }
 
-void				term_get_pos(t_term *term, int *x, int *y)
+void				term_get_row(t_term *term)
 {
 	struct termios	term_ios;
 	char			str[16];
@@ -41,6 +41,6 @@ void				term_get_pos(t_term *term, int *x, int *y)
 	write(1, "\033[6n", 4);
 	read(0, str, 16);
 	tcsetattr(0, TCSANOW, &(term->term_ios));
-	*y = ft_atoi(str + 2) - 1;
-	*x = ft_atoi(ft_strchr(str, ';') + 1) - 1;
+	term->row = ft_atoi(str + 2) - 1;
+	//*x = ft_atoi(ft_strchr(str, ';') + 1) - 1;
 }

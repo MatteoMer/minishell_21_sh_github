@@ -6,7 +6,7 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/29 13:55:41 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/07/29 22:01:29 by mmervoye         ###   ########.fr       */
+/*   Updated: 2018/08/08 19:31:14 by mdelory          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,7 @@ int				(*g_term_evt_esc_dispatch(void))(t_term *)
 int				term_evt_lf(t_term *term)
 {
 	if (term_le_check_quote(&(term->line_edit)) == 0)
-	{
 		term->ctn = 0;
-		term_exec_tc("cr");
-	}
 	else
 	{
 		term->line_edit.cur = term->line_edit.len;

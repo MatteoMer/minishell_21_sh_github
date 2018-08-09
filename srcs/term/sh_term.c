@@ -6,7 +6,7 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/29 13:55:41 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/07/29 21:39:47 by mmervoye         ###   ########.fr       */
+/*   Updated: 2018/08/08 19:25:54 by mdelory          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ char			*term_main_loop(t_term *term)
 		term_hst_add_entry(&(term->history), term->buffer);
 	term_le_clear(&(term->line_edit));
 	term->ctn = 1;
-	term_get_pos(term, &(term->p_x), &(term->p_y));
+	term_exec_tc("vi");
+	term_get_row(term);
+	ft_putstr(term->line_edit.prompt);
 	while (term->ctn > 0)
 	{
 		ioctl(STDOUT_FILENO, TIOCGWINSZ, &(term->wsize));
@@ -28,6 +30,8 @@ char			*term_main_loop(t_term *term)
 		term_read_input(term);
 		term_refresh(term);
 	}
+	(term->idle = 1) ? term_write_prompt(term) : 0;
+	term_exec_tc("ve");
 	tcsetattr(0, TCSANOW, &(term->old_ios));
 	term_hst_goto_head(&(term->history));
 	if (term->ctn == -1)
@@ -39,18 +43,30 @@ char			*term_main_loop(t_term *term)
 
 void			term_write_prompt(t_term *term)
 {
-	int			x;
-	int			y;
+	char		*ptr;
+	char		*ptr1;
+	char		*ptr2;
+	int			offset;
 
+	offset = ft_strlen(term->line_edit.prompt);
+	ptr = le_cursortext(&term->line_edit, term->idle);
+	ptr2 = ptr;
+	term_exec_goto("cm", offset, term->row);
 	term_exec_tc("cd");
-	x = ft_strlen(term->line_edit.prompt) + term->line_edit.cur;
-	y = x / term->wsize.ws_col;
-	y += term->p_y;
-	x %= term->wsize.ws_col;
-	term_exec_goto("cm", term->p_x, term->p_y);
-	ft_putstr(term->line_edit.prompt);
-	ft_putstr(term->line_edit.text);
-	term_exec_goto("cm", x, y);
+	while ((ptr1 = ft_strchr(ptr2, '\n')))
+	{
+		term_exec_goto("ch", 0, offset - 2);
+		write(1, "> ", 2);
+		write(1, ptr2, ptr1 - ptr2);
+		term_exec_tc("do");
+		ptr2 = ptr1 + 1;
+	}
+	term_exec_goto("ch", 0, offset - 2);
+	write(1, "> ", 2);
+	ft_putstr(ptr2);
+	term_exec_tc("ce");
+	term_exec_tc("do");
+	free(ptr);
 }
 
 void			term_refresh(t_term *term)
@@ -58,18 +74,14 @@ void			term_refresh(t_term *term)
 	int			x;
 	int			y;
 
-	if (term->idle == 1 && term->line_edit.cur == term->line_edit.len)
-		term_exec_tc("vi");
-	else
-		term_exec_tc("ve");
 	x = ft_strlen(term->line_edit.prompt) + term->line_edit.len;
 	y = x / term->wsize.ws_col;
-	if (term->p_y + y >= term->wsize.ws_row)
+	if (term->row + y >= term->wsize.ws_row)
 	{
 		term_exec_tc("sf");
-		term->p_y--;
+		if (term->row > 0)
+			term->row--;
 	}
-	term_exec_goto("cm", term->p_x, term->p_y);
 }
 
 int				term_read_input(t_term *term)
@@ -79,8 +91,10 @@ int				term_read_input(t_term *term)
 
 	kc = 0;
 	rd = read(0, &kc, 1);
+	term->refresh = 0;
 	if (rd > 0)
 	{
+		term->refresh = 1;
 		term->idle = 0;
 		if (!ft_isprint(kc))
 			return (term_evt_dispatch(term, kc));
@@ -106,6 +120,7 @@ int				term_init(t_term *term)
 	term->line_edit.prompt = "21sh $> ";
 	term->history = NULL;
 	term->idle = 0;
+	term->refresh = 0;
 	term->old_ios = term->term_ios;
 	term->term_ios.c_iflag &= ~(ICRNL | IXON);
 	term->term_ios.c_lflag &= ~(ICANON | ECHO | IEXTEN | ISIG);
