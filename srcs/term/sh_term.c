@@ -6,7 +6,7 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/29 13:55:41 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/08/09 16:49:14 by mdelory          ###   ########.fr       */
+/*   Updated: 2018/08/09 19:38:10 by mdelory          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ char			*term_main_loop(t_term *term)
 	term->ctn = 1;
 	term_exec_tc("vi");
 	term_get_row(term);
-	ft_putstr(term->line_edit.prompt);
 	while (term->ctn > 0)
 	{
 		ioctl(STDOUT_FILENO, TIOCGWINSZ, &(term->wsize));
@@ -30,7 +29,8 @@ char			*term_main_loop(t_term *term)
 		term_read_input(term);
 		term_refresh(term);
 	}
-	(term->idle = 1) ? term_write_prompt(term) : 0;
+	term->idle = 1;
+	term_write_prompt(term);
 	term_exec_tc("ve");
 	tcsetattr(0, TCSANOW, &(term->old_ios));
 	term_hst_goto_head(&(term->history));
@@ -51,8 +51,9 @@ void			term_write_prompt(t_term *term)
 	offset = ft_strlen(term->line_edit.prompt);
 	ptr = le_cursortext(&term->line_edit, term->idle);
 	ptr2 = ptr;
-	term_exec_goto("cm", offset, term->row);
+	term_exec_goto("cm", 0, term->row);
 	term_exec_tc("cd");
+	ft_putstr(term->line_edit.prompt);
 	while ((ptr1 = ft_strchr(ptr2, '\n')))
 	{
 		term_exec_goto("ch", 0, offset - 2);
