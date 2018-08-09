@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   blt_unsetenv.c                                     :+:      :+:    :+:   */
+/*   ps_backslash.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+        */
+/*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/09 13:21:03 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/08/05 21:29:35 by xmazella         ###   ########.fr       */
+/*   Created: 2018/08/06 19:16:33 by mmervoye          #+#    #+#             */
+/*   Updated: 2018/08/06 19:20:48 by mmervoye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sh.h"
+#include "parse.h"
 
-static void		free_it_pls(t_env *tmp)
+int					ps_backslash(t_list **tokens)
 {
-	tmp->type = EXPORT;
-}
+	t_list		*tmp;
+	char		*str;
 
-int				blt_unsetenv(char **cmd)
-{
-	t_env	*tmp;
-
-	tmp = g_env;
-	if (blt_error(cmd, 0) != 0)
-		return (1);
+	tmp = *tokens;
 	while (tmp)
 	{
-		if (ft_strcmp(tmp->name, *cmd) == 0)
-		{
-			free_it_pls(tmp);
-			return (2);
-		}
+		if (tmp->content_size == 3)	
+			ps_do_parse_backslash(tmp->content);
 		tmp = tmp->next;
 	}
-	return (1);
 }

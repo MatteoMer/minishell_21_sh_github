@@ -6,13 +6,14 @@
 #    By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/21 11:21:35 by mmervoye          #+#    #+#              #
-#    Updated: 2018/08/08 17:22:22 by mdelory          ###   ########.fr        #
+#    Updated: 2018/08/09 17:36:51 by mmervoye         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = 21sh
 
-SRC_CORE =		srcs/core/main.c
+SRC_CORE =		srcs/core/main.c\
+				srcs/core/malloc_error.c
 
 SRC_LX =		srcs/lexer/lx_io.c\
 				srcs/lexer/lx_main.c\
@@ -64,11 +65,17 @@ SRC_BUILTIN =	srcs/builtin/blt_check.c\
 				srcs/builtin/blt_setenv.c\
 				srcs/builtin/blt_unsetenv.c\
 				srcs/builtin/blt_error.c\
+				srcs/builtin/blt_unset.c\
 				srcs/builtin/blt_cd.c\
 				srcs/builtin/blt_cd_launch.c\
 				srcs/builtin/blt_cd_flag.c\
 				srcs/builtin/blt_cd_normalize.c\
-				srcs/builtin/blt_free_env.c
+				srcs/builtin/blt_free_env.c\
+				srcs/builtin/blt_read.c\
+				srcs/builtin/blt_read_option.c\
+				srcs/builtin/blt_export.c\
+				srcs/builtin/blt_export2.c\
+				srcs/builtin/blt_exec_blt.c
 
 SRC = $(SRC_TERM) $(SRC_LX) $(SRC_PS) $(SRC_CORE) $(SRC_ENV) $(SRC_BINARY) \
 	  $(SRC_BUILTIN) $(SRC_REDIR)

@@ -6,7 +6,7 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/09 10:46:58 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/07/13 13:58:56 by xmazella         ###   ########.fr       */
+/*   Updated: 2018/08/09 17:32:36 by mmervoye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ static int			exec_heredoc(int out, char *name)
 	while (1)
 	{
 		ft_putstr("heredoc > ");
-		get_next_line(0, &line);
+		if (get_next_line(0, &line) == -1)
+			break ;
 		if (!ft_strcmp(line, name))
 			break ;
 		ft_putendl_fd(line, fd);

@@ -6,13 +6,13 @@
 /*   By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/03 13:14:08 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/08/02 21:19:59 by xmazella         ###   ########.fr       */
+/*   Updated: 2018/08/06 22:58:07 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh.h"
 
-static t_env		*blt_getenv(char *name, t_env *env)
+t_env		*blt_getenv(char *name, t_env *env)
 {
 	t_env	*tmp;
 
@@ -26,16 +26,16 @@ static t_env		*blt_getenv(char *name, t_env *env)
 	return (NULL);
 }
 
-static void			blt_setenv2(t_env *tmp, char **cmd, char *str, t_env **env)
+static void			blt_setenv2(t_env *tmp, char **cmd, char *str, t_env **env, t_type type)
 {
 	tmp = (t_env *)malloc(sizeof(t_env));
 	tmp->name = ft_strsub(*cmd, 0, str - (*cmd));
 	tmp->value = ft_strdup(str + 1);
-	tmp->type = 2;
+	tmp->type = type;
 	blt_add_maillon(env, tmp);
 }
 
-int					blt_setenv(char **cmd, t_env **env, int i)
+int					blt_setenv(char **cmd, t_env **env, t_type type)
 {
 	t_env	*tmp;
 	char	*str;
@@ -47,17 +47,18 @@ int					blt_setenv(char **cmd, t_env **env, int i)
 		if (*cmd[0] == '=')
 			return (blt_env_error(cmd, 1));
 		if ((str = ft_strchr(*cmd, '=')) == NULL)
-			return (i);
+			return (1);
 		*str = 0;
 		if ((tmp = blt_getenv(*cmd, *env)) != NULL)
 		{
 			free(tmp->value);
 			tmp->value = ft_strdup(str + 1);
-			i++;
 		}
-		else if (i++ != -42)
-			blt_setenv2(tmp, cmd, str, env);
+		else
+			blt_setenv2(tmp, cmd, str, env, type);
+		if (tmp)
+			tmp->type = type;
 		cmd++;
 	}
-	return (i);
+	return (1);
 }
