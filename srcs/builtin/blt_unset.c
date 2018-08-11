@@ -6,24 +6,24 @@
 /*   By: xmazella <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/05 20:13:16 by xmazella          #+#    #+#             */
-/*   Updated: 2018/08/11 06:49:13 by xmazella         ###   ########.fr       */
+/*   Updated: 2018/08/11 07:16:00 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh.h"
 
-static void        free_it_pls(t_env **del)
+static void				free_it_pls(t_env **del)
 {
 	ft_strdel(&((*del)->value));
 	ft_strdel(&((*del)->name));
 	free(*del);
 }
 
-static int                blt_do_unset(char **cmd)
+static int				blt_do_unset(char **cmd)
 {
-	t_env    *tmp;
-	t_env    *prev;
-	t_env    *del;
+	t_env	*tmp;
+	t_env	*prev;
+	t_env	*del;
 
 	prev = NULL;
 	tmp = g_env;
@@ -47,7 +47,7 @@ static int                blt_do_unset(char **cmd)
 	return (1);
 }
 
-int				blt_unset(char **cmd)
+int						blt_unset(char **cmd)
 {
 	if (*cmd[0] == '-')
 	{

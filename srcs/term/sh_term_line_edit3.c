@@ -6,13 +6,13 @@
 /*   By: mdelory <mdelory@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/07 21:39:16 by mdelory           #+#    #+#             */
-/*   Updated: 2018/08/09 19:20:47 by mdelory          ###   ########.fr       */
+/*   Updated: 2018/08/11 07:29:23 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh_term.h"
 
-static char			term_le_get_closing_char(char c)
+static char				term_le_get_closing_char(char c)
 {
 	if (c == 34 || c == 39)
 		return (c);
@@ -23,7 +23,7 @@ static char			term_le_get_closing_char(char c)
 	return (-1);
 }
 
-int					term_le_check_quote(t_line_edit *le)
+int						term_le_check_quote(t_line_edit *le)
 {
 	size_t			i;
 	char			c;
@@ -40,9 +40,8 @@ int					term_le_check_quote(t_line_edit *le)
 				if (le->text[i] == c)
 					single = 0;
 			}
-			else
-				if ((c = term_le_get_closing_char(le->text[i])) > 0)
-					single = 1;
+			else if ((c = term_le_get_closing_char(le->text[i])) > 0)
+				single = 1;
 		}
 		else
 			i++;
@@ -51,7 +50,7 @@ int					term_le_check_quote(t_line_edit *le)
 	return (single);
 }
 
-char			*le_cursortext(t_line_edit *le, int idle)
+char					*le_cursortext(t_line_edit *le, int idle)
 {
 	char		*str;
 

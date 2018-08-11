@@ -6,7 +6,7 @@
 /*   By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/09 13:21:03 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/08/11 06:49:09 by xmazella         ###   ########.fr       */
+/*   Updated: 2018/08/11 07:18:18 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int				blt_unsetenv(char **cmd)
 		if (ft_strcmp(tmp->name, *cmd) == 0)
 		{
 			tmp->type = LOCALE;
-			break;
+			break ;
 		}
-		tmear = tmp->next;
+		tmp = tmp->next;
 	}
 	return (1);
 }

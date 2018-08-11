@@ -6,7 +6,7 @@
 /*   By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/17 12:31:04 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/08/08 19:19:20 by mmervoye         ###   ########.fr       */
+/*   Updated: 2018/08/11 07:35:08 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ typedef struct	s_global
 	pid_t		g_pid;
 }				t_global;
 
-t_global		g;
+t_global		g_loc;
 void			malloc_error(void);
-
 
 #endif

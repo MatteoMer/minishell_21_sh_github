@@ -6,7 +6,7 @@
 /*   By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/03 10:57:58 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/08/11 02:57:29 by xmazella         ###   ########.fr       */
+/*   Updated: 2018/08/11 07:22:59 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ static int		blt_cd_execve_opt(char *cpath, int i)
 	}
 	else
 	{
-
 		if (access(cpath, F_OK) != 0)
 			return (blt_cd_error(2, cpath));
 		blt_cd_launch(cpath, 1);

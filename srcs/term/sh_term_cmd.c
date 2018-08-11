@@ -6,7 +6,7 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/29 13:55:41 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/08/07 20:11:22 by mdelory          ###   ########.fr       */
+/*   Updated: 2018/08/11 07:28:02 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,4 @@ void				term_get_row(t_term *term)
 	read(0, str, 16);
 	tcsetattr(0, TCSANOW, &(term->term_ios));
 	term->row = ft_atoi(str + 2) - 1;
-	//*x = ft_atoi(ft_strchr(str, ';') + 1) - 1;
 }
