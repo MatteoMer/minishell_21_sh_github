@@ -6,7 +6,7 @@
 /*   By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/29 12:13:47 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/08/09 16:40:48 by mmervoye         ###   ########.fr       */
+/*   Updated: 2018/08/11 02:51:29 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,5 @@ int		blt_cd_flag(char **cmd, int *index)
 		i = 1;
 		j++;
 	}
-	return (tmp == 1 ? 'L' : 'P');
+	return (tmp);
 }

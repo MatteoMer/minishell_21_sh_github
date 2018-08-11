@@ -6,7 +6,7 @@
 /*   By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/29 14:23:18 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/08/05 18:01:29 by xmazella         ###   ########.fr       */
+/*   Updated: 2018/08/11 06:27:36 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,14 @@ t_env		*blt_list_clone(t_env *env)
 	tmp = env;
 	while (tmp)
 	{
-		new = (t_env *)malloc(sizeof(t_env));
-		new->name = ft_strdup(tmp->name);
-		new->value = ft_strdup(tmp->value);
-		new->type = tmp->type;
-		blt_add_maillon(&out, new);
+		if (tmp->type == ENV)
+		{
+			new = (t_env *)malloc(sizeof(t_env));
+			new->name = ft_strdup(tmp->name);
+			new->value = ft_strdup(tmp->value);
+			new->type = tmp->type;
+			blt_add_maillon(&out, new);
+		}
 		tmp = tmp->next;
 	}
 	return (out);

@@ -6,7 +6,7 @@
 /*   By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/25 13:35:34 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/08/08 20:00:36 by mmervoye         ###   ########.fr       */
+/*   Updated: 2018/08/11 01:52:45 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int		blt_cd_launch(char *path, int nb)
 	if ((cmd[0] = ft_strjoinf(cmd[0], pwd)) == NULL)
 		malloc_error();
 	cmd[1] = 0;
-	blt_setenv(cmd, &g_env, ENV);
+	blt_setenv(cmd, &g_env, ENV, 0);
 	free(cmd[0]);
 	if ((cmd[0] = ft_strdup("PWD=")) == NULL)
 		malloc_error();
@@ -58,14 +58,14 @@ int		blt_cd_launch(char *path, int nb)
 		getcwd(pwd, MAXPATHLEN);
 		if ((cmd[0] = ft_strjoinf(cmd[0], pwd)) == NULL)
 			malloc_error();
-		blt_setenv(cmd, &g_env, ENV);
+		blt_setenv(cmd, &g_env, ENV, 0);
 	}
 	else
 	{
 		getcwd(pwd, MAXPATHLEN);
 		if ((cmd[0] = ft_strjoinf(cmd[0], path)) == NULL)
 			malloc_error();
-		blt_setenv(cmd, &g_env, ENV);
+		blt_setenv(cmd, &g_env, ENV, 0);
 	}
 	free(cmd[0]);
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 10:21:52 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/08/09 16:56:06 by mmervoye         ###   ########.fr       */
+/*   Updated: 2018/08/11 04:04:13 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ static char				**bn_convert_list(t_list *lst)
 	char		**env_tab;
 	int			i;
 
-	if ((lst = set_varloc(lst)) == NULL)
-		malloc_error();
-	i = bn_convert_count(lst);
 	env_tab = NULL;
+	if ((lst = set_varloc(lst)) == NULL)
+		return (env_tab);
+	i = bn_convert_count(lst);
 	if (!(env_tab = (char **)malloc(sizeof(char *) * i + 1)))
 		malloc_error();
 	env_tab[i] = NULL;
@@ -89,15 +89,11 @@ int						bn_func_exec(char **bn_tab, char **cpath,\
 	j = -1;
 	while (bn_tab[++j])
 	{
-		if ((*cpath = ft_strjoin(bn_tab[j], "/")) == NULL)
-			malloc_error();
-		if ((*cpath = ft_strjoinf(*cpath, cmd_bn_tab[0])) == NULL)
-			malloc_error();
+		*cpath = ft_strjoin(bn_tab[j], "/");
+		*cpath = ft_strjoinf(*cpath, cmd_bn_tab[0]);
 		if (access(*cpath, F_OK) == 0)
 		{
 			ret = bn_execve1(*cpath, cmd_bn_tab, tree->content);
-			if (ret == -1)
-				malloc_error();
 			free(*cpath);
 			break ;
 		}
@@ -115,10 +111,11 @@ int						bn_binary(t_ps_tree *tree)
 	char			*cpath;
 	int				ret;
 
+	ret = 0;
 	bn_tab = NULL;
 	cmd_bn_tab = NULL;
 	if ((cmd_bn_tab = bn_convert_list(tree->content)) == NULL)
-		malloc_error();
+		return (0);
 	if (access(cmd_bn_tab[0], F_OK) == 0)
 		return (bn_execve1(cmd_bn_tab[0], cmd_bn_tab, tree->content));
 	if ((bn_wrap_blt(cmd_bn_tab, tree)) != 0)

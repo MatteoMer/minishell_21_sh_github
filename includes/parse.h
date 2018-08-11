@@ -6,7 +6,7 @@
 /*   By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 16:19:15 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/08/09 16:56:15 by mmervoye         ###   ########.fr       */
+/*   Updated: 2018/08/11 02:03:06 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ char					**blt_conv_tab(t_env *env);
 char					**blt_getpath(t_env *env);
 int						blt_export(char **cmd);
 int						blt_env_check(char **cmd);
-int						blt_setenv(char **cmd, t_env **env, t_type type);
+int						blt_setenv(char **cmd, t_env **env, t_type type, int i);
 int						blt_unset(char **cmd);
 int						blt_unsetenv(char **cmd);
 void					blt_add_maillon(t_env **alst, t_env *new);

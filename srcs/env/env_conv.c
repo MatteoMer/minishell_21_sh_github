@@ -6,7 +6,7 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 12:49:59 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/08/02 20:14:41 by xmazella         ###   ########.fr       */
+/*   Updated: 2018/08/11 06:21:36 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,12 @@ char				**env_conv_tab(void)
 	i = -1;
 	while (tmp->next)
 	{
-		tmp_n = ft_strdup(tmp->name);
-		tmp_n = ft_strjoinf(tmp_n, "=");
-		env_tab[++i] = ft_strjoinf(tmp_n, tmp->value);
+		if (tmp->type == ENV)
+		{
+			tmp_n = ft_strdup(tmp->name);
+			tmp_n = ft_strjoinf(tmp_n, "=");
+			env_tab[++i] = ft_strjoinf(tmp_n, tmp->value);
+		}
 		tmp = tmp->next;
 	}
 	return (env_tab);

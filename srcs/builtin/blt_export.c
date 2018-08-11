@@ -6,7 +6,7 @@
 /*   By: xmazella <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 16:38:16 by xmazella          #+#    #+#             */
-/*   Updated: 2018/08/07 21:51:50 by xmazella         ###   ########.fr       */
+/*   Updated: 2018/08/11 06:34:14 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int			blt_export_env(char **cmd)
 			tmp = blt_getenv(*cmd, g_env);
 			if (tmp == NULL)
 			{
+				ft_putendl("mdelory");
 				if ((*cmd)[ft_strlen(*cmd) - 1] != '=')
 					str = ft_strjoin(*cmd, "=");
 				else
