@@ -6,7 +6,7 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/29 13:55:41 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/07/29 22:01:29 by mmervoye         ###   ########.fr       */
+/*   Updated: 2018/08/09 19:40:19 by mdelory          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,8 @@ int				term_evt_lf(t_term *term)
 {
 	if (term_le_check_quote(&(term->line_edit)) == 0)
 	{
+		term->line_edit.cur = term->line_edit.len;
 		term->ctn = 0;
-		term_exec_tc("cr");
 	}
 	else
 	{

@@ -6,7 +6,7 @@
 #    By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/21 11:21:35 by mmervoye          #+#    #+#              #
-#    Updated: 2018/08/09 16:53:20 by mmervoye         ###   ########.fr        #
+#    Updated: 2018/08/09 17:36:51 by mmervoye         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,8 @@ SRC_TERM =		srcs/term/sh_term.c\
 				srcs/term/sh_term_event5.c\
 				srcs/term/sh_term_history.c\
 				srcs/term/sh_term_line_edit.c\
-				srcs/term/sh_term_line_edit2.c
+				srcs/term/sh_term_line_edit2.c\
+				srcs/term/sh_term_line_edit3.c
 
 SRC_ENV =		srcs/env/env_init.c\
 				srcs/env/env_get.c\

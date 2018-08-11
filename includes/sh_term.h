@@ -6,7 +6,7 @@
 /*   By: mdelory <mdelory@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 21:45:15 by mdelory           #+#    #+#             */
-/*   Updated: 2018/07/29 15:33:59 by mmervoye         ###   ########.fr       */
+/*   Updated: 2018/08/08 17:21:12 by mdelory          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,10 @@ struct						s_term
 	char					buffer[LINE_MAX];
 	struct s_line_edit		line_edit;
 	struct s_history		*history;
+	int						refresh;
 	int						idle;
 	int						ctn;
-	int						cur_x;
-	int						cur_y;
-	int						p_x;
-	int						p_y;
+	int						row;
 	t_winsize				wsize;
 	struct termios			term_ios;
 	struct termios			old_ios;
@@ -101,8 +99,9 @@ int							term_le_move_bwd(t_line_edit *le);
 int							term_le_move_next_word(t_line_edit *le);
 int							term_le_move_prev_word(t_line_edit *le);
 int							term_le_check_quote(t_line_edit *le);
+char						*le_cursortext(t_line_edit *le, int idle);
 void						term_exec_tc(char *str);
 void						term_exec_goto(char *str, int x, int y);
 
-void						term_get_pos(t_term *term, int *x, int *y);
+void						term_get_row(t_term *term);
 #endif

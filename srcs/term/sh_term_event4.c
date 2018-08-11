@@ -6,7 +6,7 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/29 13:55:41 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/07/29 15:33:37 by mmervoye         ###   ########.fr       */
+/*   Updated: 2018/08/07 20:40:22 by mdelory          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int					term_evt_clear(t_term *term)
 {
 	(void)term;
 	term_exec_tc("cl");
-	term->p_y = 0;
+	term->row = 0;
 	return (0);
 }
 

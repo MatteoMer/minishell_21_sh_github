@@ -6,7 +6,7 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/29 13:55:41 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/06/29 14:25:44 by mmervoye         ###   ########.fr       */
+/*   Updated: 2018/08/09 19:20:53 by mdelory          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,29 +57,5 @@ int					term_le_move_prev_word(t_line_edit *le)
 	while (le->cur > 0 && text[le->cur - 1] != ' ' &&\
 			text[le->cur - 1] != '\t')
 		le->cur--;
-	return (0);
-}
-
-int					term_le_check_quote(t_line_edit *le)
-{
-	size_t			i;
-	size_t			j;
-
-	i = 0;
-	while (i < le->len)
-	{
-		if (le->text[i] == '\'' || le->text[i] == '\"')
-		{
-			j = i + 1;
-			while (le->text[j] != le->text[i])
-			{
-				if (j == le->len)
-					return ((le->text[i] == '\'' ? 1 : 2));
-				j++;
-			}
-			i = j;
-		}
-		i++;
-	}
 	return (0);
 }
