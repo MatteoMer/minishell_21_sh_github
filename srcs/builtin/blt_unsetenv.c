@@ -6,7 +6,7 @@
 /*   By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/09 13:21:03 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/08/11 06:48:11 by xmazella         ###   ########.fr       */
+/*   Updated: 2018/08/11 06:49:09 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int				blt_unsetenv(char **cmd)
 			tmp->type = LOCALE;
 			break;
 		}
-		tmp = tmp->next;
+		tmear = tmp->next;
 	}
 	return (1);
 }
