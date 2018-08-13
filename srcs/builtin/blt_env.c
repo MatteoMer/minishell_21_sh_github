@@ -6,7 +6,7 @@
 /*   By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/27 14:06:07 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/08/11 06:30:00 by xmazella         ###   ########.fr       */
+/*   Updated: 2018/08/13 08:25:24 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,14 @@ int					blt_execve(char *path, char **cmd, t_env *env)
 		waitpid(father, &status, 0);
 	if (father == 0)
 		execve(path, cmd, blt_conv_tab(env));
-	free(path);
 	return (status);
 }
 
 static int			blt_exec_cmd_env(char *str, t_env *env, char **cmd)
 {
 	char	**cpath;
-	char	*tmp;
 	char	**ptr;
+	char	*tmp;
 	int		ret;
 	int		i;
 
@@ -44,30 +43,22 @@ static int			blt_exec_cmd_env(char *str, t_env *env, char **cmd)
 			return (0);
 		ptr = cpath;
 		tmp = blt_env_access(cmd, str, cpath, env);
+		ft_deltab(&ptr);
 		if (!tmp)
-		{
-			ft_putstr("minishell: env: No such file or directory: ");
-			ft_putendl(str);
 			return (-1);
-		}
 	}
 	return (0);
 }
 
 static int			blt_exec_full_path(char *str, t_env *env, char **cmd)
 {
-	char *cpath;
-
-	cpath = NULL;
-	cpath = ft_strdup(str);
-	if (access(cpath, F_OK) == 0)
-		blt_execve(cpath, cmd, env);
+	if (access(str, F_OK) == 0)
+		blt_execve(str, cmd, env);
 	else
 	{
-		ft_putstr("minishell: env: No such file or directory: ");
+		ft_putstr("21sh: env: No such file or directory: ");
 		ft_putendl(str);
 	}
-	free(cpath);
 	return (0);
 }
 
@@ -102,10 +93,13 @@ int					blt_env(char **cmd)
 	{
 		while (env)
 		{
-			ft_putstr(env->name);
-			ft_putchar('=');
-			ft_putendl(env->value);
-			env = env->next;
+			if (env->type == ENV)
+			{
+				ft_putstr(env->name);
+				ft_putchar('=');
+				ft_putendl(env->value);
+			}
+			env = env->next;	
 		}
 	}
 	blt_free_env(&ptr);

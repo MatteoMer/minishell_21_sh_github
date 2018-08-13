@@ -6,7 +6,7 @@
 /*   By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/03 13:14:08 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/08/11 07:16:40 by xmazella         ###   ########.fr       */
+/*   Updated: 2018/08/13 07:59:06 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,9 @@ int					blt_setenv(char **cmd, t_env **env, t_type type, int i)
 			tmp->value = ft_strdup(str + 1);
 			tmp->type = type;
 		}
-		else if (++i)
+		else
 			blt_setenv2(cmd, str, env, type);
+		i++;
 		cmd++;
 	}
 	return (i);
