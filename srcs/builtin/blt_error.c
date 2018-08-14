@@ -6,7 +6,7 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/29 13:48:53 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/07/09 11:50:37 by mmervoye         ###   ########.fr       */
+/*   Updated: 2018/08/14 06:39:36 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,21 +43,6 @@ int		blt_env_error(char **cmd, int i)
 		ft_putstr("invalid argument\n");
 	}
 	return (0);
-}
-
-int		blt_bn_error(char **cmd1, char **cmd, int i, int ret)
-{
-	if (i == 1)
-	{
-		ft_putstr("minishell: ");
-		ft_putstr(*cmd);
-		ft_putstr(": command not found");
-		ft_putstr("\n");
-		ft_deltab(&cmd);
-		(void)ret;
-		(void)cmd1;
-	}
-	return (-1);
 }
 
 int		blt_error(char **cmd, int i)

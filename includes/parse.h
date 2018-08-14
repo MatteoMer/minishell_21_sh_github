@@ -6,7 +6,7 @@
 /*   By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 16:19:15 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/08/11 02:03:06 by xmazella         ###   ########.fr       */
+/*   Updated: 2018/08/14 04:21:08 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int						ps_parse_redir_check(t_list *tokens, int i);
 int						bn_wrap_exec(char **bn_tab, char **cpath,\
 char **cmd_bn_tab, t_ps_tree *tree);
 int						bn_func_exec(char **bn_tab, char **cpath,\
-char **cmd_bn_tab, t_ps_tree *tree);
+char **cmd_bn_tab);
 int						ps_parse_redir(t_list *tokens);
 int						ps_do_parse(t_list *tokens);
 int						ps_error(char c);
@@ -52,7 +52,7 @@ char					*bn_rec_redir_right(t_ps_tree *tree, char prev, char c);
 t_ps_tree				*bn_rec_redir_left(t_ps_tree *tree, char first);
 int						bn_redir_main(t_ps_tree *tree);
 char					*bn_read_all_file(char *name);
-int						bn_execve1(char *path, char **bn_tab, t_list *lst);
+int						bn_execve1(char *path, char **bn_tab);
 int						g_status;
 int						blt_error(char **cmd, int i);
 int						blt_env_error(char **cmd, int i);

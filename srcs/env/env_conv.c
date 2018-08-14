@@ -6,7 +6,7 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 12:49:59 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/08/11 06:21:36 by xmazella         ###   ########.fr       */
+/*   Updated: 2018/08/14 07:45:48 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ char				**env_conv_tab(void)
 	tmp = g_env;
 	while (tmp)
 	{
-		i++;
+		if (tmp->type == ENV)
+			i++;
 		tmp = tmp->next;
 	}
-	tmp = g_env;
-	if (!(env_tab = (char **)malloc(sizeof(char *) * i + 1)))
+	if (i == 0 || !(env_tab = (char **)malloc(sizeof(char *) * i + 1)))
 		return (NULL);
-	env_tab[i - 1] = 0;
+	tmp = g_env;
 	i = -1;
 	while (tmp->next)
 	{
@@ -41,5 +41,6 @@ char				**env_conv_tab(void)
 		}
 		tmp = tmp->next;
 	}
+	env_tab[i] = 0;
 	return (env_tab);
 }

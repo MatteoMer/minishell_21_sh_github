@@ -6,7 +6,7 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/29 13:55:41 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/08/09 19:38:10 by mdelory          ###   ########.fr       */
+/*   Updated: 2018/08/14 05:21:14 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ void			term_write_prompt(t_term *term)
 	term_exec_goto("ch", 0, offset - 2);
 	write(1, "> ", 2);
 	ft_putstr(ptr2);
-	term_exec_tc("ce");
 	free(ptr);
 }
 

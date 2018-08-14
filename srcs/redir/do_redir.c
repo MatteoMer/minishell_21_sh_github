@@ -6,7 +6,7 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/09 09:49:22 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/08/11 07:26:41 by xmazella         ###   ########.fr       */
+/*   Updated: 2018/08/14 04:23:10 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int					redir_exec(char **bn_tab, char **cpath,\
 	if (c_pid == 0)
 	{
 		do_redir(tree->content);
-		bn_func_exec(bn_tab, cpath, cmd_bn_tab, tree);
+		bn_func_exec(bn_tab, cpath, cmd_bn_tab);
 		exit(0);
 	}
 	if (waitpid(c_pid, &ret, 0) < 0)
