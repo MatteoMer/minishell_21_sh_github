@@ -6,7 +6,7 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/09 09:49:22 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/08/14 04:23:10 by xmazella         ###   ########.fr       */
+/*   Updated: 2018/08/15 01:30:27 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ int					redir_blt_exec(char **cmd, t_ps_tree *tree)
 	if (c_pid == 0)
 	{
 		do_redir(tree->content);
-		fork_exec_blt(cmd);
-		exit(0);
+		exit(blt_check(cmd));
 	}
 	if (waitpid(c_pid, &ret, 0) < 0)
 		return (-1);

@@ -6,7 +6,7 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/09 09:42:37 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/08/14 04:21:49 by xmazella         ###   ########.fr       */
+/*   Updated: 2018/08/14 23:36:02 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,7 @@ int					bn_wrap_exec(char **bn_tab, char **cpath,\
 	int		ret;
 
 	if (check_redir(tree->content) == 0)
-	{
 		ret = redir_exec(bn_tab, cpath, cmd_bn_tab, tree);
-		ft_deltab(&cmd_bn_tab);
-	}
 	else
 		ret = bn_func_exec(bn_tab, cpath, cmd_bn_tab);
 	return (ret);

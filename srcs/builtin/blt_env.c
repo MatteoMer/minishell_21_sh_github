@@ -6,7 +6,7 @@
 /*   By: mmervoye <mmervoye@student.42.fd>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/27 14:06:07 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/08/13 08:25:24 by xmazella         ###   ########.fr       */
+/*   Updated: 2018/08/15 01:17:20 by xmazella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ int					blt_env(char **cmd)
 			if (env->type == ENV)
 			{
 				ft_putstr(env->name);
+				ft_putstr("---->>>>>>merci mmervoyer");
 				ft_putchar('=');
 				ft_putendl(env->value);
 			}
