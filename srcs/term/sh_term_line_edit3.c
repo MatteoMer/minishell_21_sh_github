@@ -6,7 +6,7 @@
 /*   By: mdelory <mdelory@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/07 21:39:16 by mdelory           #+#    #+#             */
-/*   Updated: 2018/08/11 07:29:23 by xmazella         ###   ########.fr       */
+/*   Updated: 2018/08/15 03:01:10 by mdelory          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,11 @@ int						term_le_check_quote(t_line_edit *le)
 	return (single);
 }
 
-char					*le_cursortext(t_line_edit *le, int idle)
+char					*le_cursortext(t_line_edit *le, int cursor)
 {
 	char		*str;
 
-	if (!idle || le->len != le->cur)
+	if (cursor)
 	{
 		str = ft_strnew(le->len + 13);
 		ft_strncat(str, le->text, le->cur);

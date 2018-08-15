@@ -5,3 +5,4 @@
 *.dSYM
 21sh
 .heredoc_tmp
+*.a

@@ -6,7 +6,7 @@
 /*   By: mmervoye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/29 13:55:41 by mmervoye          #+#    #+#             */
-/*   Updated: 2018/08/14 05:21:14 by xmazella         ###   ########.fr       */
+/*   Updated: 2018/08/15 03:03:12 by mdelory          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,11 @@ char			*term_main_loop(t_term *term)
 	while (term->ctn > 0)
 	{
 		ioctl(STDOUT_FILENO, TIOCGWINSZ, &(term->wsize));
-		term_write_prompt(term);
+		term_write_prompt(term, 1);
 		term_read_input(term);
 		term_refresh(term);
 	}
-	term->idle = 1;
-	term_write_prompt(term);
+	term_write_prompt(term, 0);
 	term_exec_tc("ve");
 	tcsetattr(0, TCSANOW, &(term->old_ios));
 	term_hst_goto_head(&(term->history));
@@ -41,7 +40,7 @@ char			*term_main_loop(t_term *term)
 	return (term->line_edit.text);
 }
 
-void			term_write_prompt(t_term *term)
+void			term_write_prompt(t_term *term, int cursor)
 {
 	char		*ptr;
 	char		*ptr1;
@@ -49,7 +48,7 @@ void			term_write_prompt(t_term *term)
 	int			offset;
 
 	offset = ft_strlen(term->line_edit.prompt);
-	ptr = le_cursortext(&term->line_edit, term->idle);
+	ptr = le_cursortext(&term->line_edit, cursor);
 	ptr2 = ptr;
 	term_exec_goto("cm", 0, term->row);
 	term_exec_tc("cd");
@@ -104,14 +103,11 @@ int				term_read_input(t_term *term)
 	if (rd > 0)
 	{
 		term->refresh = 1;
-		term->idle = 0;
 		if (!ft_isprint(kc))
 			return (term_evt_dispatch(term, kc));
 		term_hst_goto_head(&(term->history));
 		term_le_insert(&(term->line_edit), kc);
 	}
-	else
-		term->idle = !term->idle;
 	return (0);
 }
 
@@ -128,7 +124,6 @@ int				term_init(t_term *term)
 		return (-1);
 	term->line_edit.prompt = "21sh $> ";
 	term->history = NULL;
-	term->idle = 0;
 	term->refresh = 0;
 	term->old_ios = term->term_ios;
 	term->term_ios.c_iflag &= ~(ICRNL | IXON);

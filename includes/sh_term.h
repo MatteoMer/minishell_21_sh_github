@@ -6,7 +6,7 @@
 /*   By: mdelory <mdelory@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 21:45:15 by mdelory           #+#    #+#             */
-/*   Updated: 2018/08/08 17:21:12 by mdelory          ###   ########.fr       */
+/*   Updated: 2018/08/15 03:03:51 by mdelory          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ struct						s_term
 	struct s_line_edit		line_edit;
 	struct s_history		*history;
 	int						refresh;
-	int						idle;
 	int						ctn;
 	int						row;
 	t_winsize				wsize;
@@ -61,7 +60,7 @@ struct						s_term
 
 char						*term_main_loop(t_term *term);
 int							term_read_input(t_term *term);
-void						term_write_prompt(t_term *term);
+void						term_write_prompt(t_term *term, int cursor);
 void						term_refresh(t_term *term);
 int							term_init(t_term *term);
 int							term_evt_dispatch(t_term *term, char kc);
